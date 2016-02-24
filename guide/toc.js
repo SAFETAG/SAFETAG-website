@@ -13,8 +13,9 @@ function createLink(href, innerHTML) {
 function generateTOC(toc) {
 	var i2 = 0, i3 = 0, i4 = 0;
 	toc = toc.appendChild(document.createElement("ul"));
-	for (var i = 0; i < document.body.childNodes.length; ++i) {
-		var node = document.body.childNodes[i];
+	var elements = getElementsByTagNames('h2,h3,h4,h5');
+	for (var i = 0; i < elements.length; ++i) {
+		var node = elements[i];
 		var tagName = node.nodeName.toLowerCase();
 		if (tagName == "h4") {
 			++i4;
@@ -40,4 +41,34 @@ function generateTOC(toc) {
 			toc.appendChild(h2item = document.createElement("li")).appendChild(createLink("#section" + section, node.innerHTML));
 		}
 	}
+}
+
+/*
+ * getElementsByTagNames
+ * by http://www.quirksmode.org/
+ */
+
+function getElementsByTagNames(list,obj) {
+	if (!obj) var obj = document;
+	var tagNames = list.split(',');
+	var resultArray = new Array();
+	for (var i=0;i<tagNames.length;i++) {
+		var tags = obj.getElementsByTagName(tagNames[i]);
+		for (var j=0;j<tags.length;j++) {
+			resultArray.push(tags[j]);
+		}
+	}
+	var testNode = resultArray[0];
+	if (!testNode) return [];
+	if (testNode.sourceIndex) {
+		resultArray.sort(function (a,b) {
+				return a.sourceIndex - b.sourceIndex;
+		});
+	}
+	else if (testNode.compareDocumentPosition) {
+		resultArray.sort(function (a,b) {
+				return 3 - (a.compareDocumentPosition(b) & 6);
+		});
+	}
+	return resultArray;
 }
