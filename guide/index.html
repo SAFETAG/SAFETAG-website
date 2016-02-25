@@ -9,7 +9,7 @@
 
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-    body > * {margin: 0 5% 1em 5%;}
+    html, body {padding-top: 0px !important;}
     div#toc ul {list-style-type: none;}
   </style>
 
@@ -17,6 +17,8 @@
 
 </head>
 <body onload="generateTOC(document.getElementById('toc'));">
+<div id="toc" style="display: block; float: left; width: 20%; height: 900px; overflow: scroll; position: fixed; background-color: #eee; padding-top: 1em;"><b>Table of Contents</b></div>
+<div id="content" style="display: block; float: right; width: 65% !important; margin: 0 5% 0 2%; ">
 
 <header class="coverpage">
   <div class="covertop">
@@ -31,8 +33,6 @@
   </div>
 </header>
 
-
-<div id="toc"></div>
 
 
 <!-- License -->
@@ -4125,6 +4125,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 </ul>
 </div>
 <p><!-- APPENDIX A - Auditor travel Kit Checklist--></p>
+<h1>APPENDICES</h1>
 <h2 id="appendix-draft-engagement-and-confidentiality-agreement">APPENDIX: Draft Engagement and Confidentiality Agreement</h2>
 <p>In order to protect the privacy of SUBJECT, AUDITOR agrees to comply with the following restrictions:</p>
 <ul>
@@ -4135,8 +4136,8 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>AUDITOR will work with whatever level of access SUBJECT is comfortable providing. This includes access to staff members for brief &quot;interviews,&quot; as well as more technical access, such as passwords, local connectivity, privileged or unprivileged accounts on local or remote services, etc.. That said, some level of access typically allows an auditor to produce a report that is significantly more useful than the output a pure &quot;black box&quot; audit. (And this is doubly true when the auditor wishes to tread lightly in order to avoid impacting the stability of the subject’s network infrastructure and the productivity of its staff.)</li>
 </ul>
 <h2 id="appendix-travel-kit-and-checklist">APPENDIX: Travel Kit and Checklist</h2>
-<h4 id="travel-kit-checklist">Travel Kit Checklist</h4>
-<h5 id="hardware">Hardware</h5>
+<h3 id="travel-kit-checklist">Travel Kit Checklist</h3>
+<h4 id="hardware">Hardware</h4>
 <ul>
 <li>Laptop with encrypted drive</li>
 <li>Laptop power supply</li>
@@ -4148,7 +4149,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>Secure storage media for audit findings</li>
 <li>Spare storage media</li>
 </ul>
-<h5 id="software-digital-resources">Software / digital resources</h5>
+<h4 id="software-digital-resources">Software / digital resources</h4>
 <ul>
 <li>Update and test Kali and additional software tools</li>
 <li>Dictionaries</li>
@@ -4156,12 +4157,12 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>Prepared and secured SAFETAG audit directory</li>
 <li>Verify tools are ready to go</li>
 </ul>
-<h5 id="facilitation-supplies">Facilitation Supplies</h5>
+<h4 id="facilitation-supplies">Facilitation Supplies</h4>
 <ul>
 <li>Post-it notes</li>
 <li>Sharpies</li>
 </ul>
-<h5 id="logistics">Logistics</h5>
+<h4 id="logistics">Logistics</h4>
 <ul>
 <li>Visa and other travel documents</li>
 <li>Hotel reservation</li>
@@ -4171,14 +4172,14 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>Travel plan</li>
 </ul>
 <h2 id="appendix-sample-capacity-interview-questions">APPENDIX: Sample Capacity Interview Questions</h2>
-<h5 id="introduction-1">Introduction</h5>
+<h3 id="introduction-1">Introduction</h3>
 <p>For this interview, I will mostly ask you about how your organization relates to tech tools in a general sense. I will also ask specific questions about how your organization works with digital security issues.</p>
 <p>Together, this information will help me identify ____________</p>
 <p>All of the information we collect here will be kept completely private.</p>
 <p>This interview will last approximately ____ hour.</p>
 <p>Please feel free to stop me or ask if a question is unclear, or if you would like to take a break.</p>
 <p>The interview starts with some questions about you and the organization. Again, this will all be kept strictly confidential.</p>
-<h5 id="open-up">Open Up</h5>
+<h3 id="open-up">Open Up</h3>
 <p>&quot;Warm up the participant with questions they are comfortable with.&quot; <a href="#fn85" class="footnoteRef" id="fnref85"><sup>85</sup></a></p>
 <ol type="1">
 <li>What is your name?</li>
@@ -4236,9 +4237,9 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>Fundraising</li>
 </ul></li>
 </ol>
-<h5 id="go-broad">Go Broad</h5>
+<h3 id="go-broad">Go Broad</h3>
 <p>&quot;Prompt bigger, even aspirational, thinking that they may not be accustomed to on a daily basis.&quot; <a href="#fn86" class="footnoteRef" id="fnref86"><sup>86</sup></a></p>
-<h5 id="go-specific">Go Specific</h5>
+<h3 id="go-specific">Go Specific</h3>
 <p>&quot;Dig deeper on the challenge at hand &amp; prompt with ‘what if’ scenarios.&quot; <a href="#fn87" class="footnoteRef" id="fnref87"><sup>87</sup></a></p>
 <ol start="23" type="1">
 <li>What is the most important reason for your organization to exist? (Provide an example if needed - Examples below)
@@ -4448,12 +4449,12 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>Does the organization have access to the Internet in its offices?</li>
 <li><p>In the last month, has your organization lost access to Internet for reasons other than power outages</p></li>
 </ol>
-<h5 id="management-only">Management Only</h5>
+<h3 id="management-only">Management Only</h3>
 <ol start="72" type="1">
 <li>Is the manager aware that a test is about to be performed?</li>
 <li>What data would create the greatest risk to the organization if exposed, corrupted, or deleted?</li>
 </ol>
-<h5 id="technical-only">Technical Only</h5>
+<h3 id="technical-only">Technical Only</h3>
 <ol start="74" type="1">
 <li>Are there any systems which could be characterized as fragile? (systems with tendencies to crash, older operating systems, or which are unpatched)</li>
 <li>Are testing and validation procedures to verify that business applications are functioning properly in place?</li>
@@ -4481,7 +4482,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>How many external IP addresses, if applicable?</li>
 <li>Are there any devices in place that may impact the results of audit scans such as a firewall, intrusion detection/prevention system, web application firewall, or load balancer?</li>
 </ol>
-<h4 id="categories">Categories</h4>
+<h3 id="categories">Categories</h3>
 <p>Below are the categories each question fits within. Use this to help you reduce the information you obtained from the interview into manageable themes, insights, and implications.</p>
 <h5 id="basic-information">Basic Information</h5>
 <p>5, 6, 8, 10, 11, 13, 14, 15, 24, 25, 7</p>
@@ -4490,21 +4491,21 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <h5 id="capacity-1">Capacity</h5>
 <p>Capacity questions seek to reflect organizations’ readiness and likelihood to succeed in engaging with technology in their work. <a href="#fn88" class="footnoteRef" id="fnref88"><sup>88</sup></a></p>
 <p>23, 26, 27, 28, 34, 35, 36, 37, 38, 39, 40, 43, 45, 46, 29, 30, 31, 55, 9, 16, 17, 18, 19, 20</p>
-<h5 id="challenge">Challenge</h5>
+<h4 id="challenge">Challenge</h4>
 <p>Challenge questions seek to reflect the degree to which internal an external factors will complicate or inhibit the effective and safe uptake and use. <a href="#fn89" class="footnoteRef" id="fnref89"><sup>89</sup></a></p>
 <p>41, 40, 42, 46, 47, 48, 69, 70, 71</p>
-<h5 id="audit-scope">Audit Scope</h5>
+<h4 id="audit-scope">Audit Scope</h4>
 <p>Scope questions explore what the client is looking to gain out of the audit, why the client is looking to have an audit performed against their environment, and whether or not they want certain types of tests performed during the audit. <a href="#fn90" class="footnoteRef" id="fnref90"><sup>90</sup></a></p>
 <p>44, 72, 49, 51, 50, 52</p>
-<h5 id="network-audit-questions">Network Audit Questions</h5>
+<h4 id="network-audit-questions">Network Audit Questions</h4>
 <p>90, 91, 92, 93, 81, 80, 79, 78, 77, 49, 74, 75, 76, 53, 54, 56, 57</p>
-<h5 id="web-application-audit-questions">Web Application Audit Questions</h5>
+<h4 id="web-application-audit-questions">Web Application Audit Questions</h4>
 <p>12, 82, 83, 84</p>
-<h5 id="wireless-audit-questions">Wireless Audit Questions</h5>
+<h4 id="wireless-audit-questions">Wireless Audit Questions</h4>
 <p>85, 86, 87, 88, 89</p>
-<h5 id="device-audit">Device Audit</h5>
+<h4 id="device-audit">Device Audit</h4>
 <p>32, 33, 21</p>
-<h5 id="data-audit">Data Audit</h5>
+<h4 id="data-audit">Data Audit</h4>
 <p>73</p>
 <h2 id="appendix-password-dictionaries">APPENDIX: Password Dictionaries</h2>
 <h3 id="password-dictionary-creation-2">Password Dictionary Creation</h3>
@@ -4742,7 +4743,7 @@ journalism
 <li>[ ] Yes</li>
 </ul>
 <h2 id="appendix-recon-ng-walkthrough">APPENDIX: Recon-ng walkthrough</h2>
-<h4 id="installing-recon-ng">Installing Recon-ng</h4>
+<h3 id="installing-recon-ng">Installing Recon-ng</h3>
 <ul>
 <li>Install recon-ng from the git source: git clone https://LaNMaSteR53@bitbucket.org/LaNMaSteR53/recon-ng.git</li>
 <li>cd recon-ng</li>
@@ -4750,7 +4751,7 @@ journalism
 <li>Launch Recon-ng: ./recon-ng</li>
 </ul>
 <p>For full instructions, see the <a href="https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!getting-started">Recon-ng Getting Started Instructions</a></p>
-<h4 id="using-recon-ng">Using Recon-ng</h4>
+<h3 id="using-recon-ng">Using Recon-ng</h3>
 <ul>
 <li>Read the short <a href="https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide">Recon-ng Usage Guide</a></li>
 </ul>
@@ -4771,7 +4772,7 @@ contacts         domains          leaks            netblocks        pushpins    
 <p>Using recon modules</p>
 <p>The recon modules are named in a very specific fashion to help the user understand the flow of data inside the tool. Modules use the syntax <code>&lt;methodology step&gt;/&lt;input table&gt;-&lt;output table&gt;/&lt;module&gt;</code>. The inputs are the first part of each module, and the outputs are the second part. The module name itself is the tool used to process the data. So, recon/domains-hosts/brute-hosts takes domain names (websitename.org) as an input, and outputs hostnames (extranet.websitename.org, etc.). If you provide the name of the specific module, recon-ng can figure it out (though tab completion doesn't help) -- for example, <code>use  breachalarm</code> works just as well as <code>use recon/contacts-creds/breachalarm</code></p>
 <p>You can also search modules by their inputs or outputs. <code>search domains-</code> displays all modules that take domain names as their input, and <code>search -contacts</code> displays all modules that outputs contact information.</p>
-<h5 id="preparing">Preparing</h5>
+<h4 id="preparing">Preparing</h4>
 <p>Set verboseness on during the guide so that you can see everything that happens. (recommended to begin with)</p>
 <pre><code>[recon-ng][default] &gt; set VERBOSE True</code></pre>
 <ul>
@@ -4818,7 +4819,7 @@ facebook_password  google_api         jigsaw_password    pwnedlist_api      sona
   +--------------------------------------------------------------------------------------+</code></pre>
 <p>Reference the Creating API Keys Section below for quick links to setting up popular APIs.</p>
 <p>NOTE: Sample Keys - working keys may have different lengths than the randomly generated numbers in this example.</p>
-<h5 id="first-steps">First steps</h5>
+<h4 id="first-steps">First steps</h4>
 <p>NOTE: This walkthrough is using sample data. Results will vary widely depending on the organization you are working with.</p>
 <ul>
 <li>Create a workspace for your recon.</li>
@@ -4889,7 +4890,7 @@ netblock (TEXT): 96.127.170.121
   | 2     | 174.154.167.69 | base   |
   | 3     | 96.127.170.121 | base   |
   +---------------------------------+</code></pre>
-<h5 id="reconnaisance-phase-netblocks-example">Reconnaisance phase (netblocks example)</h5>
+<h4 id="reconnaisance-phase-netblocks-example">Reconnaisance phase (netblocks example)</h4>
 <ul>
 <li>Run modules that leverage known netblocks. This exposes other domains and hosts from which domains can be harvested.</li>
 </ul>
@@ -4929,7 +4930,8 @@ shell           Executes shell commands
 show            Shows various framework items
 spool           Spools output to a file
 unset           Unsets module options
-use             Loads selected module</code></pre>
+use             Loads selected module
+</code></pre>
 <p>Use the <code>show info</code> command to learn about the module and see what options are available.</p>
 <pre><code>[recon-ng][websitename][shodan_net] &gt; show info
 
@@ -5437,8 +5439,8 @@ FILENAME =&gt; /home/computer/.recon-ng/workspaces/websitename/Domains.csv
 <li><p>LinkedIn Secret (linkedin_secret) - The Secret key will be available underneath the &quot;OAuth Keys&quot; heading for the application created above.</p></li>
 </ul>
 <h1 id="appendix-device-assessment-checklist">APPENDIX: Device Assessment Checklist</h1>
-<h4 id="device-assessment-checklist">Device Assessment Checklist</h4>
-<h5 id="osx">OSX</h5>
+<h2 id="device-assessment-checklist">Device Assessment Checklist</h2>
+<h3 id="osx">OSX</h3>
 <ul>
 <li><p>OS Security Updates</p></li>
 <li>Firewall
@@ -5465,7 +5467,7 @@ FILENAME =&gt; /home/computer/.recon-ng/workspaces/websitename/Domains.csv
 <li>(Command line) <code>ps -ef</code></li>
 <li><p>(GUI) The &quot;Activity Monitor&quot; application is located in /Applications/Utilities provides a similar interface to &quot;top&quot;</p></li>
 </ul>
-<h5 id="windows">Windows</h5>
+<h3 id="windows">Windows</h3>
 <p>If Windows is not your primary OS, you can download sample Virtual Machines (with time limitations) from Microsoft through their project to improve IE support via https://www.modern.ie/en-us/virtualization-tools#downloads (see also http://www.makeuseof.com/tag/download-windows-xp-for-free-and-legally-straight-from-microsoft-si/ and https://modernievirt.blob.core.windows.net/vhd/virtualmachine_instructions_2014-01-21.pdf)</p>
 <p><strong>Windows 8</strong></p>
 <ul>
@@ -5526,7 +5528,7 @@ FILENAME =&gt; /home/computer/.recon-ng/workspaces/websitename/Domains.csv
 </ol></li>
 <li>(GUI) Right-click on task bar, select &quot;Start Task Manager&quot;</li>
 </ul>
-<h5 id="linux">Linux</h5>
+<h3 id="linux">Linux</h3>
 <ul>
 <li>Firewall</li>
 <li><ol start="151" type="I">
@@ -5554,6 +5556,7 @@ FILENAME =&gt; /home/computer/.recon-ng/workspaces/websitename/Domains.csv
 <li><code>top</code></li>
 </ol></li>
 </ul>
+
 <h1 id="footnotes">Footnotes</h1>
 <!-- Load Footnotes -->
 
@@ -5689,5 +5692,6 @@ FILENAME =&gt; /home/computer/.recon-ng/workspaces/websitename/Domains.csv
 <li id="fn90"><p><a href="http://www.pentest-standard.org/index.php/Pre-engagement#Questionnaires">&quot;Questionnaires - The Penetration Testing Execution Standard&quot;</a><a href="#fnref90">↩</a></p></li>
 </ol>
 </section>
+</div>
 </body>
 </html>
