@@ -3,39 +3,55 @@
  * by Matt Whitlock <http://www.whitsoftdev.com/>
  */
 
-function createLink(href, innerHTML) {
+function createLink(href, innerHTML, section) {
 	var a = document.createElement("a");
 	a.setAttribute("href", href);
 	a.innerHTML = innerHTML;
+//	var collapse = document.createElement('a')
+//	collapse.setAttribute("class", "collapse");
+//	collapse.setAttribute("data-target", "li" + section );
+//	a.insertBefore(coll)
 	return a;
 }
 
 function generateTOC(toc) {
-	var i2 = 0, i3 = 0, i4 = 0;
+	var i1=0, i2 = 0, i3 = 0, i4 = 0;
 	toc = toc.appendChild(document.createElement("ul"));
-	var elements = getElementsByTagNames('h2,h3,h4,h5');
+	var elements = getElementsByTagNames('h1,h2,h3,h4,h5');
 	for (var i = 0; i < elements.length; ++i) {
 		var node = elements[i];
 		var tagName = node.nodeName.toLowerCase();
 		if (tagName == "h4") {
 			++i4;
 			if (i4 == 1) toc.lastChild.lastChild.lastChild.appendChild(document.createElement("ul"));
-			var section = i2 + "." + i3 + "." + i4;
+			var section = i1 + "." + i2 + "." + i3 + "." + i4;
 			node.insertBefore(document.createTextNode(section + ". "), node.firstChild);
 			node.id = "section" + section;
-			toc.lastChild.lastChild.lastChild.lastChild.appendChild(document.createElement("li")).appendChild(createLink("#section" + section, node.innerHTML));
+			var collapse = document.createElement("a");
+			collapse.setAttribute('class', ':collapse');
+			collapse.setAttribute('id', section);
+
+			toc.lastChild.lastChild.lastChild.lastChild.appendChild(document.createElement("li")).appendChild((createLink("#section" + section, node.innerHTML, section)))
+//			toc.insertBefore(document.createLink("#", "»"));
 		}
 		else if (tagName == "h3") {
 			++i3, i4 = 0;
 			if (i3 == 1) toc.lastChild.appendChild(document.createElement("ul"));
-			var section = i2 + "." + i3;
+			var section = i1 + "." + i2 + "." + i3;
 			node.insertBefore(document.createTextNode(section + ". "), node.firstChild);
 			node.id = "section" + section;
 			toc.lastChild.lastChild.appendChild(document.createElement("li")).appendChild(createLink("#section" + section, node.innerHTML));
 		}
 		else if (tagName == "h2") {
 			++i2, i3 = 0, i4 = 0;
-			var section = i2;
+			var section = i1 + "." + i2;
+			node.insertBefore(document.createTextNode(section + ". "), node.firstChild);
+			node.id = "section" + section;
+			toc.appendChild(h2item = document.createElement("li")).appendChild(createLink("#section" + section, node.innerHTML));
+		}
+		else if (tagName == "h1") {
+			++i1, i2=0, i3 = 0, i4 = 0;
+			var section = i1;
 			node.insertBefore(document.createTextNode(section + ". "), node.firstChild);
 			node.id = "section" + section;
 			toc.appendChild(h2item = document.createElement("li")).appendChild(createLink("#section" + section, node.innerHTML));
