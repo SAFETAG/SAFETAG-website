@@ -3,7 +3,7 @@
  * by Matt Whitlock <http://www.whitsoftdev.com/>
  */
 
-function createLink(href, innerHTML, section) {
+function createLink(href, innerHTML) {
 	var a = document.createElement("a");
 	a.setAttribute("href", href);
 	a.innerHTML = innerHTML;
@@ -17,7 +17,7 @@ function createLink(href, innerHTML, section) {
 function generateTOC(toc) {
 	var i1=0, i2 = 0, i3 = 0, i4 = 0;
 	toc = toc.appendChild(document.createElement("ul"));
-	var elements = getElementsByTagNames('h1,h2,h3,h4,h5');
+	var elements = getElementsByTagNames('h1,h2,h3');
 	for (var i = 0; i < elements.length; ++i) {
 		var node = elements[i];
 		var tagName = node.nodeName.toLowerCase();
@@ -31,7 +31,7 @@ function generateTOC(toc) {
 			collapse.setAttribute('class', ':collapse');
 			collapse.setAttribute('id', section);
 
-			toc.lastChild.lastChild.lastChild.lastChild.appendChild(document.createElement("li")).appendChild((createLink("#section" + section, node.innerHTML, section)))
+			toc.lastChild.lastChild.lastChild.lastChild.appendChild(document.createElement("li")).appendChild((createLink("#section" + section, node.innerHTML)))
 //			toc.insertBefore(document.createLink("#", "»"));
 		}
 		else if (tagName == "h3") {
