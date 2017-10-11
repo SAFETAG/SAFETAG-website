@@ -1,0 +1,9 @@
+
+#Don't commit any auto-saves
+\#*\#
+*~
+_site
+.sass-cache
+old
+presentation/.gitignore
+presentation/.travis.yml

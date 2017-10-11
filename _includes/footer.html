@@ -1,0 +1,37 @@
+  <!-- Footer -->
+      <footer id="footer">
+<!--
+      <h1> {{ site.title }} </h1>
+      <p style="margin: 0px 20%; color: white !important;">{{ site.description }}</p>
+    -->
+        <ul class="icons">
+          <li><a href="https://twitter.com/safetagproject" target="_blank" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="https://github.com/SAFETAG" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+<!--          <li><a href="#" class="icon alt fa-key"><span class="label">PGP</span></a></li>-->
+          <li><a href="mailto:info@SAFETAG.org" class="icon alt fa-envelope"><span class="label">email</span></a></li>
+          <li><a href="https://community.internetfreedomfestival.org/community/channels/safetag" class="icon alt fa-comments"><span class="label">chat</span></a></li>
+          <li><a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="icon alt fa-rss"><span class="label">RSS</span></a></li>
+        </ul>
+
+        <ul class="copyright">
+          <li>&copy; <a href="https://www.internews.org/" target="_blank">Internews</a></li><li>See <a href="/credits.html">Credits</a> for license details</li>
+        </ul>
+      </footer>
+
+      <!-- Piwik -->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setCookieDomain", "*.safetag.org"]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//stats.safetag.org/piwik/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', '1']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript><p><img src="//stats.safetag.org/piwik/piwik.php?idsite=1&rec=1" style="border:0;" alt="" /></p></noscript>
+      <!-- End Piwik Code -->

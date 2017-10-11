@@ -1,0 +1,13 @@
+# Site settings
+title: SAFETAG
+email: info@SAFETAG.org
+description: > # this means to ignore newlines until "baseurl:"
+  SAFETAG is a professional audit framework that adapts traditional penetration testing and risk assessment methodologies to be relevant to smaller non-profit organizations based or operating in the developing world.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://SAFETAG.org" # the base hostname & protocol for your site
+twitter_username: safetagproject
+github_username:  safetag
+
+# Build settings
+markdown: kramdown
+excerpt_separator: <!--more-->
