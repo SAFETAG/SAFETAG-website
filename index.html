@@ -1,263 +1,118 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>SAFETAG (Security Auditing Framework and Evaluation Template for Advocacy Groups)</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="Security Auditing Framework and Evaluation Template for Advocacy Groups" />
-		<meta name="keywords" content="digital security, privacy, penetration testing, security audit, non-profit, NGO" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.poptrox.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel-noscript.css" />
-			<link rel="stylesheet" href="css/style.css" />
-		</noscript>
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-	</head>
-	<body>
+---
+layout: custom
+overview: true
+title: A Project of Internews
+---
 
-		<!-- Header -->
-			<header id="header">
-				<!-- Logo -->
-					<h1 id="logo"><a href="#">SAFETAG&trade;</a>: a project of Internews</h1>
-			
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro">About</a></li>
-
-							<li><a href="#audit">Audit Framework</a></li>
-
-							<!--<li><a href="#checklist">Checklist</a></li>-->
-
-							<li><a href="#license">License</a></li>
-
-							<li><a href="#contact">Contact</a></li>
-
-						</ul>
-
-					</nav>
-
-
-
-			</header>
-
-			
-
-		<!-- Intro -->
-
-			<section id="intro" class="main style1 dark fullscreen">
-
-				<div class="content  box small">
-
+		<!-- Banner -->
+			<section id="banner">
+				<div class="content">
 					<header>
-
-						<h2>SAFET<i class="fa solo fa-lock"></i>G</h2>
-
+						<h2 style="font-size: 6em; font-weight: 800; font-family: Source Sans Pro, sans-serif">SAFET<i class="fa solo fa-lock"></i>G</h2>
+						<h3>Security Auditing Framework and Evaluation Template for Advocacy Groups</h3>
 					</header>
-					<p style="font-size: 1.25em; line-height: 1.5em; padding: 0% 15%;"> The <u>S</u>ecurity 
-<u>A</u>uditing <u>F</u>ramework and <u>E</u>valuation <u>T</u>emplate for <u>A</u>dvocacy <u>G</u>roups (<acronym title="Security Auditing Framework and 
-Evaluation Template for Advocacy Groups">SAFETAG</acronym>) is a <a href="#audit">professional audit framework</a> that adapts traditional penetration testing and risk assessment methodologies to be relevant to smaller non-profit organizations based or operating in the developing world.</p>					
-					<footer>
-						<a href="#audit" class="button style2 down">More</a>
-
-					</footer>
-
+						<p style="font-size: 1.25em; font-weight: 800; padding: 0em 4em; text-align: left;"><br />SAFETAG is a professional audit framework that adapts traditional penetration testing and risk assessment methodologies to be relevant to smaller non-profit organizations based or operating in the developing world.</p>
+						<a href="#about" class="goto-next scrolly">Learn More</a>
 				</div>
-
 			</section>
 
-		
+<!-- Two -->
+				<section id="about" class="spotlight style2 left">
+					<span class="image fit main"><img src="images/unsplash_cc0_cristina-gottardi-192989.resized.resized.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>About SAFETAG</h2>
+						</header>
+						<p>SAFETAG audits are serve small scale civil society organizations and independent media houses who have digital security concerns by working with them to identify the risks they face and providing capacity-aware, pragmatic next steps to address them.</p>
+
+						<p>Traditional security audits are based upon the assumption that an organization has the time, money, and capacity to aim for perfect security. Low-income at-risk groups have none of these luxuries.  SAFETAG combines of assessment activities from the the security auditing world with best-practices for working with small scale at-risk organizations.</p>
+						<p>SAFETAG auditors lead a risk modeling process that helps staff and leadership take an institutional lens	on their digital security problems, expose vulnerabilities that impact their critical processes and assets, and provide clear reporting and follow up to help the organization strategically move forward and identify the support that they need.</p>
+
+			</div>
+			<a href="#updates" class="goto-next scrolly">The framework</a>
+		</section>
+
+	<section id="updates" class="spotlight style2 right">
+		<span class="image fit main"><img src="images/Lock-Screen-Wallpapers_viewallpaper_ccU_Mike-Rush-flipped.jpg" alt="" /></span>
+		<div class="content">
+			<header>
+				<h2>Recent Updates</h2>
+			</header>
+							<ul>
+							{% for post in site.posts limit:5 %}
+							    <li><a href="{{ post.url }}">{{ post.title }}</a> {{ post.date  | date: '%B %d, %Y'}} </li>
+							{% endfor %}
+							</ul>
+
+					</div>
+					<a href="#framework" class="goto-next scrolly">The framework</a>
+				</section>
+
 
 		<!-- One -->
+			<section id="framework" class="spotlight style1 bottom" style="background-image: url(/images/Door-and-padlock-BW_deviantart_ccU_picture-frame.jpg)">
+				<span class="image fit main"><img src="images/lock-padlock-rusty_unsplash_cc0_james-sutton-187816.jpg" alt="" /></span>
+				<div class="content">
+					<div class="container">
+						<div class="row">
+							<div class="4u 12u$(medium)">
+								<header>
+									<h2>The SAFETAG Audit Framework and Curricula</h2>
+									<p></p>
+								</header>
+							</div>
+							<div class="4u 12u$(medium)">
+								<p>You can download the overview and the full guide of the SAFETAG audit here</p>
+								<ul>
+									<li><a href="https://github.com/SAFETAG/SAFETAG/releases/download/v0.4/SAFETAG.Overview.English.pdf">Overview</a> (<a href="https://github.com/SAFETAG/SAFETAG/releases/download/v0.4/SAFETAG.Overview.Espanol.pdf">(En Español</a>)</li>
+								  <li><a href="https://github.com/SAFETAG/SAFETAG/files/1278308/SAFETAG-FullGuide_Sep2017.pdf">Full Guide</a> (<a href="https://github.com/SAFETAG/SAFETAG/releases/download/v0.4/SAFETAG.Full.guide.Espanol.pdf">En Español</a>)</li>
+								</ul>
+							</div>
+							<div class="4u$ 12u$(medium)">
+								<p>To train new auditors, Internews has also provided a curricula:</p>
+									<ul>
+									 <li><a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/SAFETAG.Auditor.Training.Curricula.pdf">Auditor training curricula</a></li>
+								 </ul>
 
-			<section id="audit" class="main style1 dark fullscreen">
-
-				<div class="content box small">
-
-					<header>
-
-						<h2>Audit Framework</h2>
-
-					</header>
-
-					<div style="text-align: left">
-					<p style="padding: 0% 15%">The SAFETAG audit framework has been re-built in a new framework built around open source tools, hosted at <a href="https://github.com/OpenInternet/SAFETAG/" target="_blank">github</a> - watch for compiled versions of the framework documents in the <a href="https://github.com/OpenInternet/SAFETAG/releases">Releases</a>. If you're on Linux, you can follow the <a href="https://github.com/SAFETAG/SAFETAG/blob/master/INSTALL.md">installation process</a> to build PDF files out of the collection of markdown text documents and prepare audit reports.</p>
-					<p style="padding: 0% 15%">You can download the overview, the full guide and the process map of the SAFETAG audit here:</p>
-					<table><tr><td valign="top">
-						<p style="padding: 0% 15%"><strong><i class="fa fa-file-text-o"></i></strong> <a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/SAFETAG.Overview.English.pdf" target="_blank">Download the Overview (PDF, English)</a></p>
-						<p style="padding: 0% 15%"><strong><i class="fa fa-file-text-o"></i></strong> <a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/SAFETAG.Full.guide.English.pdf" target="_blank">Download the full Guide (PDF, English)</a></p>
-						
-					</td><td valign="top">
-						<p style="padding: 0% 15%"><strong><i class="fa fa-file-text-o"></i></strong> <a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/SAFETAG.Overview.Espanol.pdf" target="_blank">Download the Overview (PDF, Español)</a></p>
-						<p style="padding: 0% 15%"><strong><i class="fa fa-file-text-o"></i></strong> <a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/SAFETAG.Full.guide.Espanol.pdf" target="_blank">Download the full Guide (PDF, Español)</a></p>
-					</td></tr>
-					<tr><td colspan="2">
-						<p style="padding: 0% 30%"><strong><i class="fa fa-user"></i></strong> <a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/SAFETAG.Auditor.Training.Curricula.pdf" target="_blank">Download the SAFETAG auditor training curricula</a></p>
-						<p style="padding: 0% 30%"><strong><i class="fa fa-sitemap"></i></strong> <a href="https://github.com/OpenInternet/SAFETAG/releases/download/v0.4/Diagram.of.the.SAFETAG.process.svg" target="_blank">View the SAFETAG audit process (SVG)</a></p>
-					</td></tr></table>
-<!--
-<div style=" "><img src="expertise_vertical.png" align="center" /></div>
-
-					<p><strong><i class="fa fa-file-text-o"></i></strong> Download an audit template (<a href="SAFETAG_Audit_Template.docx">DocX</a>, <a href="SAFETAG_Audit_Template.odt">ODT</a>) to work through a SAFETAG audit without installing Dradis</p>
-					<p><strong><i class="fa fa-file-text-o"></i></strong> <a href="SAFETAG_Audit_SampleOrg.pdf">Download a sample security audit (PDF)</a></p>
--->
-					</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<!-- To add back in the checklist option uncomment the following line and delete its replacement below. -->
-				<!-- <a href="#checklist" class="button style2 down anchored">Next</a> -->
-				<a href="#license" class="button style2 down anchored">Next</a>
-				
-
+				<a href="#process" class="goto-next scrolly">Next</a>
 			</section>
 
-			<!-- Two -->
-<!-- To Add back in the checklist section delete this comment marker
-			<section id="checklist" class="main style2 left dark fullscreen">
-
-				<div class="content box style2">
-
-					<header>
-
-						<h2>Self Assessment Checklist</h2>
-
-					</header>
-						<p>The Self-Assessment Checklist has been deprecated and is no longer available. Please refer to <a href="https://github.com/OpenInternet/System_Administrator_Guide_Text/releases">Guide for System Administrators in At‐Risk Organizations</a>, as well as reference 
-To Add back in the checklist section delete this comment marker -->  
-<!-- 					<p>On your own? <br/>Use the <a href="checklist.pdf" target="_blank">Self Assessment Checklist</a>  to work through the most common security challenges that the SAFETAG audit has found in NGOs to date. </p>
-					<p>This checklist is for system administrators to focus on a clear list of changes based on common findings from SAFETAG audits to upgrade their organization’s digital security setup.</p>
--->
-<!-- To Add back in the checklist section delete this comment marker
-
-  <a href="https://github.com/the-engine-room/responsible-data/tree/master/organizational-security-atomized-plan" target="_blank">the engine room's atomized policy checklist</a>.</p>
-				</div>
-
-				<a href="#license" class="button style2 down anchored">Next</a>
-
-			</section>
-
-To Add back in the checklist section delete this comment marker -->
-		<!-- Three -->
-
-			<section id="license" class="main style2 right dark fullscreen">
-
-				<div class="content box style2">
-
-					<header>
-
-						<h2>License</h2>
-
-					</header>
-
-<p>SAFETAG resources are available under a <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike (CC BY-SA 3.0) License</a></p>
-
-<p>Please see <a href="https://github.com/SAFETAG/SAFETAG/blob/master/en/document_matter/license.md">the full license</a> for content attribution and a usage guide to referring to the "SAFETAG" wordmark.
+<section id="license" class="spotlight style2 right">
+	<span class="image fit main"><img src="images/Italy-Locks_ccBY_joncamfield.jpg" alt="" /></span>
+	<div class="content">
+		<header>
+			<h2>License</h2>
+			<p>SAFETAG resources are available under a <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike (CC BY-SA 3.0) License</a></p>
+			<p>For photo and design details, check out <a href="/credits.html">Credits</a></p>
+			<p>Please see <a href="https://github.com/SAFETAG/SAFETAG/blob/master/en/document_matter/license.md">the full license</a> for content attribution and a usage guide to referring to the "SAFETAG" wordmark.
 </p>
+		</header>
+		<p></p>
+	</div>
+	<a href="#contact" class="goto-next scrolly">The framework</a>
+</section>
 
-<!--						<h2>Credits</h2>-->
-
-
-				</div>
-
-				<a href="#contact" class="button style2 down anchored">Next</a>
-
-			</section>
-			
-
-		<!-- Contact -->
-
-			<section id="contact" class="main style3 secondary">
-
-				<div class="content container">
-
+		<!-- Five -->
+			<section id="contact" class="wrapper style2 special fade">
+				<div class="container">
 					<header>
+						<h2>Get in touch</h2>
+						<p><a href="mailto:info@SAFETAG.org" class="button">info@SAFETAG.org</a></p>
 
-						<h2>Contact the SAFETAG team.</h2>
-						<p>We'd love to hear from you at <em>info at safetag.org</em>.</p>
-						<p>We have a global network of auditors trained in the SAFETAG framework available for independent work with small NGOs.</p>
-
-						<p>For updates or suggestions for the framework, please submit an <a href="https://github.com/OpenInternet/SAFETAG/issues" target="_new">issue</a>.</p>
+							<p>We have a global network of auditors trained in the SAFETAG framework available for independent work with small NGOs.</p>
+							<p>For updates or suggestions for the framework: <br /> <a href="https://github.com/SAFETAG/SAFETAG/issues" class="button">submit an issue</a></p>
 
 					</header>
-
-					<div class="box container small">
-					</div>
-
+<!--					<form method="post" action="#" class="container 50%">
+						<div class="row uniform 50%">
+							<div class="8u 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="you?" /></div>
+							<div class="4u$ 12u$(xsmall)"><input type="submit" value="Connect" class="fit special" /></div>
+						</div>
+					</form>
+					-->
 				</div>
-
 			</section>
-
-			
-
-		<!-- Footer -->
-
-			<footer id="footer">
-
-			
-
-				<!--
-
-				     Social Icons
-
-				     
-
-				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
-
-				-->
-
-					<ul class="actions">
-
-<!--						<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
-
-						<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
--->
-						<li><a href="mailto:info@safetag.org" class="fa solo fa-envelope-o"><span>email</span></a></li>
-
-						<li><a href="https://hkps.pool.sks-keyservers.net/pks/lookup?op=get&search=0xA998959FF926BF8B" target="_blank" class="fa solo fa-key"><span>pgp</span></a></li>
-
-						<li><a href="https://github.com/OpenInternet/SAFETAG" target="_blank" title="github" class="fa solo fa-github-square"><span>private github</span></a></li>
-
-					</ul>
-
-
-
-				<!-- Menu -->
-
-					<ul class="menu">
-						<li>&copy; SAFETAG&trade; / <a href="https://www.internews.org" target="_blank">Internews</a></li>
-						<li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
-						<li>Backgrounds: <a href="http://wallpaper-million.com/download/Padlock-and-a-latch-wallpaper_3063.html" target="_blank">[1]</a>, <a href="http://picture-frame.deviantart.com/art/Door-and-padlock-B-W-as-req-d-108284151#comments" title="picture-frame" target="_blank">[2]</a>, <a href="http://viewallpaper.com/lock-screen-wallpapers.html" title="Mike Rush" target="_blank">[3]</a>, <a href="https://joncamfield.com/" title="Jon Camfield" target="_blank">[4]</a> 
-
-					</ul>
-
-			
-
-			</footer>
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.safetag.org"]);
-  _paq.push(["setDomains", ["*.safetag.org"]]);
-  _paq.push(["trackPageView"]);
-  _paq.push(["enableLinkTracking"]);
-
-
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.safetag.org/piwik/";
-    _paq.push(["setTrackerUrl", u+"piwik.php"]);
-    _paq.push(["setSiteId", "1"]);
-    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Piwik Code -->
-
-
-	</body>
-
-</html>
