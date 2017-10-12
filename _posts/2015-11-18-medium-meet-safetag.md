@@ -6,9 +6,12 @@ tags: safetag, medium
 author: Jon
 ---
 
+![Padlock CC-BY Rachel Titiriga/Flickr](/images/Flickr_Padlock_ccBY_pocait-Rachel-Titiriga.jpg "CC-BY Rachel-Titiriga/Flickr")
+
 I’d be willing to wager that you, like me, have been offered “credit monitoring services” more than once in the past few years, because a place you’ve done business with or a past employer was hacked, potentially putting your personal data out on the market.
 
 Corporations and governments, while they are struggling to keep up with hacks, do have resources and teams devoted to the battle. But smaller, much more vulnerable victims of attacks deserve our attention too.
+
 
 Non-profit organizations around the world are also targeted by cybercrime, and don’t have the benefit of expensive services or personnel monitoring or protecting their systems.
 
@@ -41,3 +44,5 @@ The entire methodology is open and available on github, with active conversation
 The future of SAFETAG is to drive — and be driven by — this cross-organizational adoption. Working with this community, Internews is creating a set of practices and a common language that make up the SAFETAG “core activities,” along with with a “plug-in” type approach for advanced SAFETAG topics that auditors can provide to help organizations work through not only digital security risks, but also financial, reputational, or even legal risks.
 
 Interested? We’d love to see you over in our issue queue!
+
+*(Image credit: [Padlock: Plovdiv, Bulgaria -- Rachel Titiriga/CC-BY](https://www.flickr.com/photos/pocait/6974320264/))*
