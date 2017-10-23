@@ -1,14 +1,16 @@
 ---
 layout: page
 title:  "SAFETAG Events and Trainings Code of Conduct"
-date:   2016-06-07 20:09:25
-tags: uxforum, highriskux, codeofconduct, conduct, antiharassment
-author: USABLE
+date:   2018-10-23 20:09:25
+tags: codeofconduct, conduct, antiharassment
+author: Internews
 ---
 
 # Code of Conduct
 
 **SAFETAG succeeds by bringing varied lived experiences, skillsets, and voices to the forefront of a global discussion. As such, we expect all attendees to be respectful of others, appreciate differences of opinion, and to communicate clearly.**
+
+**The SAFETAG community has an internal set of community standards and additional code of conduct expectations for auditors available in [github](https://github.com/SAFETAG/SAFETAG/blob/master/en/document_matter/CODE_OF_CONDUCT.md)**
 
 All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following code of conduct. Organizers will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe  environment for everybody.
 
