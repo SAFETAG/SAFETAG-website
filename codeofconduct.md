@@ -4,6 +4,7 @@ title:  "SAFETAG Events and Trainings Code of Conduct"
 date:   2018-10-23 20:09:25
 tags: codeofconduct, conduct, antiharassment
 author: Internews
+permalink: /codeofconduct/
 ---
 
 # Code of Conduct
