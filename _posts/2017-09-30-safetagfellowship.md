@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "SAFETAG Fellowship Grants (Due Nov 17!)"
-date:   2017-09-28 12:31:55
+title:  "REMINDER: Nov 17 deadline for SAFETAG Fellowship Grants "
+date:   2017-11-09 08:58:55
 tags: SAFETAG, funding
 author: Jon
 ---
+
 Internews is launching a funding pool to diversify and scale SAFETAG across the broader human rights and digital security community. Internews is seeking to fund 10-12 individuals or teams embedded in organizations to customize SAFETAG to meet their needs, conduct SAFETAG-based assessments integrating these customizations, and share these approaches back with the SAFETAG community. Grant amounts are expected to vary based on local costs and scope, but the average grant is expected to be $25,000 USD and approximately 4 months in duration.
 
 Winning applications must support at least two SAFETAG-based assessments of at-risk organizations working with vulnerable or marginalized communities. These assessments should be in parallel with the creation and documentation of customized approaches -- new activities which work better for the applicant's region/community/specific threats and/or a "playlist" of existing (and custom-created or modified) SAFETAG activities which best work for this community. Grantees will be expected to responsibly share the non-identifying context research (e.g. high-level country risk assessments) within the SAFETAG community and to coordinate on peer-training events to share their approach. Following each assessment, the grantee will help the recipient organization develop risk mitigation plans to address weaknesses, and either provide direct support through existing organizational programming or connect the organization to external services, goods, or funding support as needed to address their security vulnerabilities.
