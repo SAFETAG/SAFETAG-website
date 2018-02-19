@@ -2293,101 +2293,16 @@ Transitioning to WPA networks with strong passwords, even for guest networks, is
 </div>
 <h3 id="activities-6">Activities</h3>
 <div class="boxtext">
-<h4 id="network-scanning">Network Scanning</h4>
-<h5 id="summary-22">Summary</h5>
-<p>Local networks often have a variety of devices connected to them - servers, user devices, staff cellphones, and more. Scanning the connected devices can reveal potential areas for further research (odd ports being open, out of date devices/services, forgotten servers/services...).</p>
-<p>Selected scanning of external network devices (websites, webmail, extranet services) may also reveal vulnerabilities or other areas of concern.</p>
-<h5 id="overview-12">Overview</h5>
-<ul>
-<li>Scan the network for all connected devices</li>
-<li>Review device information and open services for potential vulnerabilities</li>
-<li>Using beacons and other data, map devices to users.</li>
-<li>Scan select external services (particularly self-hosted webmail/email servers and other extranet services) to detect possible unencrypted but sensitive connection possibilities</li>
-<li>Enumerate shared directories on the network and check for access controls</li>
-</ul>
-<h5 id="materials-needed-12">Materials Needed</h5>
-<h5 id="considerations-12">Considerations</h5>
-<h5 id="walkthrough-15">Walkthrough</h5>
-<p>Using a network scanning tool (<strong>nmap/zenmap</strong> work well), discover the devices connected to the organization's network, and explore further information such as services, service banners, and operating systems. More intense scans can be too time-consuming to run across the entire network, so target those to higher value systems. As always, be aware of the scans and additional scripts you choose, and focus your exploration (in nmap) on scripts categorized as &quot;safe&quot;.</p>
-<ul>
-<li>Discover network-connected devices, including servers and workstations, but also smartphones, voip phones, and other devices.</li>
-<li>Open ports</li>
-<li>OS detection</li>
-<li>banners (not all ports corectly map to their &quot;expected&quot; services, also provides service version information)</li>
-<li>additional Scripts and more exhaustive port scanning as needed</li>
-</ul>
-<p><strong>Service research</strong></p>
-<ul>
-<li>Inspect all systems providing internal services to the host organization.
-<ul>
-<li>Record the version and patch levels of software on the device. <a href="#fn42" class="footnoteRef" id="fnref42"><sup>42</sup></a></li>
-<li>Identify weak ports or services available under the current device's firewall configuration. <a href="#fn43" class="footnoteRef" id="fnref43"><sup>43</sup></a></li>
-<li>Identify all odd/obscure/one-off services. <a href="#fn44" class="footnoteRef" id="fnref44"><sup>44</sup></a></li>
-</ul></li>
-<li>Using the list of software versions and patches identify attacks and, if possible, identified malware that devices in the office are vulnerable to.</li>
-</ul>
-<p><strong>SMB Network tools</strong></p>
-<ul>
-<li>smbtree</li>
-</ul>
-<p><strong>Shared Folders Enumeration</strong></p>
-<p>Unsigned NTLM authentication messages vulnerable to Man-in-the-Middle attack on SMB file servers</p>
-<p>Unsigned NTLM authentication messages allow an attacker on the LAN to add, remove or copy files to and from the organization’s file servers (and workstations with filesharing enabled).</p>
-<h5 id="recommendation-10">Recommendation</h5>
-<p>While office networks are often treated as &quot;trusted&quot; spaces, measures should be in place to reduce the potential harm of an attacker who gains access. In addition, devices that &quot;travel&quot; -- such as laptops and mobile phones -- should have adequate security settings (generally, firewalls) to protect them on other networks.</p>
-A policy should be in place for connecting personal devices to work networks, as well as work devices to non-work networks.
+<p>!INCLUDE exercises/network_scanning/index.md&quot;</p>
 </div>
 <div class="boxtext">
-<h4 id="network-traffic-analysis">Network Traffic Analysis</h4>
-<h5 id="summary-23">Summary</h5>
-<p>Any content that is sent out over the network without encryption is easy to intercept; this includes email, web passwords, and chat messages.</p>
-<p>This attacker could be someone, such as a patron of the Internet cafe where a staff member is working, who just happens to be using the same local network to connect to the Internet. Or, she could work for an organization with privileged access to the relevant network, such as the Internet Service Provider (ISP) of either the sender or receiver and other network-backbone connections made along the way.</p>
-<h5 id="overview-13">Overview</h5>
-<ul>
-<li>Intercept network traffic</li>
-<li>Review it for security concerns</li>
-<li>Watch for unencrypted email (POP/SMTP/IMAP) connections, unencrypted website logins (for blogs, websites, and webmail in particular)</li>
-</ul>
-<h5 id="materials-needed-13">Materials Needed</h5>
-<ul>
-<li>Wifi device and drivers supporting &quot;promiscuous mode&quot; (see http://www.aircrack-ng.org/doku.php?id=compatible_cards&amp;DokuWiki=a36042531edb54f9b95a76ff61d77d14)</li>
-</ul>
-<h5 id="considerations-13">Considerations</h5>
-<ul>
-<li>Treat captured network traffic with the utmost security and empathetic responsibility. They may contain very personal data, passwords, and more. These should not be shared except in specific, intentional samples with anyone, including the organization itself.</li>
-</ul>
-<h5 id="walkthrough-16">Walkthrough</h5>
-<h5 id="network-traffic-interception">Network Traffic Interception</h5>
-<p><strong>Step 1:</strong> The attacker tricks the victim into routing all of their traffic through the attacker’s machine. This involves making a simple request to the victim’s IP address, which is not difficult to do. Computers are rarely configured to ignore such requests.</p>
-<pre><code>$ sudo sh -c &#39;echo 1 &gt; /proc/sys/net/ipv4/ip_forward&#39;
-
-$ sudo arpspoof -i wlan0 -t 192.168.1.99 192.168.1.1</code></pre>
-<p>Sample Output:</p>
-<pre><code>00:11:22:33:44:55 aa:bb:cc:dd:ee:ff 0806 42: arp reply 192.168.1.1 is-at 00:11:22:33:44:55
-00:11:22:33:44:55 aa:bb:cc:dd:ee:ff 0806 42: arp reply 192.168.1.1 is-at 00:11:22:33:44:55
-00:11:22:33:44:55 aa:bb:cc:dd:ee:ff 0806 42: arp reply 192.168.1.1 is-at 00:11:22:33:44:55
-00:11:22:33:44:55 aa:bb:cc:dd:ee:ff 0806 42: arp reply 192.168.1.1 is-at 00:11:22:33:44:55
-...
-00:11:22:33:44:55 aa:bb:cc:dd:ee:ff 0806 42: arp reply 192.168.1.1 is-at 00:11:22:33:44:55</code></pre>
-<p>In the example above, only a single victim (192.168.1.99) is being targeted, but the attack works fine against multiple victims, or even against the entire network. In other words, the attacker does not need to know which IP address (on the office or Internet cafe LAN, for example) belongs to the target. Furthermore, the victim is extremely unlikely to notice any sign that this phase of the attack is taking place.</p>
-<p>EtterCap provides a powerful frontend to managing this process with multiple potential targets. In EtterCap:</p>
-<ul>
-<li>Under the &quot;Sniff&quot; menu, select &quot;Unified sniffing&quot; (for most cases where you are using one interface to both intercept and forward traffic), and select the relevant interface (wlan0)</li>
-<li>Under the Hosts menu, select the systems on the network you will target, or leave blank to target all systems</li>
-<li>Under Mitm, select &quot;arp spoofing&quot; for this example</li>
-<li>Select &quot;Start&quot; under the Sniffing menu</li>
-</ul>
-<!-- Ettercap Screenshot -->
-<p><strong>Step 2:</strong> At this point, if the attacker is looking for unencrypted traffic, all the attacker needs to do is launch a packet-sniffer, such as Wireshark, and scan through the intercepted traffic for specific vulnerable information, such as email or website logins, as well as traffic revealing shadow infrastructure usage, such as Dropbox.</p>
-<!-- Wireshark screenshot -->
-<h5 id="recommendation-11">Recommendation</h5>
-<p>Only use services with <a href="https://securityinabox.org/en/guide/secure-communication">&quot;SSL&quot; encryption</a> (&quot;HTTPS&quot;), and consider adding <a href="https://www.eff.org/https-everywhere">HTTPS Everywhere</a> to browsers. This does not itself guarantee protection from all attacks, but it is a good first-step in protecting information (such as passwords or email) in transit from your computer to the service provider.</p>
+<p>!INCLUDE exercises/traffic_analysis/index.md&quot;</p>
 </div>
 <div class="boxtext">
 <h4 id="remote-network-and-user-device-assessment">Remote Network and User Device Assessment</h4>
-<h5 id="summary-24">Summary</h5>
+<h5 id="summary-22">Summary</h5>
 <p>This component allows the auditor to work remotely to identify the devices on a host's network, the services that are being used by those devices, and any protections in place, as well as to assess the security of the individual devices on the network.</p>
-<h5 id="overview-14">Overview</h5>
+<h5 id="overview-12">Overview</h5>
 <p>There can be several approaches for this exercise, depending on the scenario.</p>
 <h6 id="scenario-0">Scenario 0</h6>
 <p>The organization has contacted the auditor through an intermediary who is familiar with tech and can follow SAFETAG instructions, or the organization has a tech person among their employees.</p>
@@ -2401,7 +2316,7 @@ $ sudo arpspoof -i wlan0 -t 192.168.1.99 192.168.1.1</code></pre>
 <li>Remote Desktop or remote VPN into targeted Network. Remote Desktop is tunneling into a targeted machine that lives on the same targeted LAN network where you wish to scan the network and do the device assessment; the auditor controls the machine remotely and uses it as the auditor machine.</li>
 <li>VPN to a trusted VPN server. In this case, the auditee will connect one of their machines to a trusted VPN server, and the auditor will connect to the same VPN server, allowing both LANs at the auditee's and auditor's ends to connect.</li>
 </ol>
-<h5 id="materials-needed-14">Materials Needed</h5>
+<h5 id="materials-needed-12">Materials Needed</h5>
 <h6 id="scenario-1-1">Scenario 1</h6>
 <ul>
 <li>A machine accessible globally via ssh. It could be a machine or a virtual server</li>
@@ -2429,7 +2344,7 @@ $ sudo arpspoof -i wlan0 -t 192.168.1.99 192.168.1.1</code></pre>
 <li>A trusted OpenVPN Server</li>
 </ul>
 <p><strong>Applications to use</strong>: <a href="http://www.tightvnc.com/">TightVNC</a> <a href="https://www.teamviewer.com/en/">TeamViewer</a> <a href="https://support.microsoft.com/en-us/help/17463/windows-7-connect-to-another-computer-remote-desktop-connection">Windows remote desktop</a></p>
-<h5 id="considerations-14">Considerations</h5>
+<h5 id="considerations-12">Considerations</h5>
 <h6 id="scenario-1-2">Scenario 1</h6>
 <ul>
 <li>Make sure that the auditee downloads the Linux image over TLS and guide them through the verification process (instructions for Ubuntu can be found <a href="https://tutorials.ubuntu.com/tutorial/tutorial-how-to-verify-ubuntu#0">here</a>).</li>
@@ -2439,7 +2354,7 @@ $ sudo arpspoof -i wlan0 -t 192.168.1.99 192.168.1.1</code></pre>
 <li>The server used for the middle connection should be updated and secured, or updated and ephemeral.</li>
 <li>Make sure to remove/clean any persistent connections once you are done with auditing.</li>
 </ul>
-<h5 id="walkthrough-17">Walkthrough</h5>
+<h5 id="walkthrough-15">Walkthrough</h5>
 <h6 id="scenario-0-1">Scenario 0</h6>
 <p>Instruct the intermediary or the tech person in the organization to follow the instructions in the exercise on <a href="../../methods/network_mapping">Network mapping</a> and on <a href="../../methods/user_device_assessment">User device assessment</a>.</p>
 <h6 id="scenario-1-3">Scenario 1</h6>
@@ -2526,7 +2441,7 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 <p>The default configuration of OpenVPN will not allow the clients (A-B) to see each other on the network. To allow that, you have to enable client-to-client directive and enable your both subnets (Auditee and Auditor) to see each others networks. To do so, follow <a href="https://community.openvpn.net/openvpn/wiki/RoutedLans">these instruction</a>.</p>
 <p>After finishing the installation and testing it, the auditor will pass the .ovpn file to the person at the auditee's site through a trusted way, and provide instructions on how to install and connect to the server. After connecting A and B to C, the auditor will be able to start the network and device assessment at the other end.</p>
 <p><strong>Note</strong>: In case the VPN is censored in A or B's countries, or in both, you can follow <a href="https://www.pluggabletransports.info/implement/openvpn/">these instructions</a> on how to bypass the censorship by using pluggable transports.</p>
-<h5 id="recommendation-12">Recommendation</h5>
+<h5 id="recommendation-10">Recommendation</h5>
 </div>
 <div class="boxtext">
 <h4 id="router-attacks">Router Attacks</h4>
@@ -2564,7 +2479,7 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 
 <!-- Organizational Device Assessment -->
 <h2 id="organizational-device-usage">Organizational Device Usage</h2>
-<h3 id="summary-25">Summary</h3>
+<h3 id="summary-23">Summary</h3>
 <p>This component allows the auditor to discover and assess the security of the devices on the network and/or used in the organization. This component consists of interviews, surveys, network mapping, and inspection of devices.</p>
 <h3 id="purpose-7">Purpose</h3>
 <p>Compromised devices have the ability to undermine nearly any other organizational attempt at securing information. Knowing if devices receive basic software and security updates/upgrades and what core protections exist against unauthorized access is vital to designing a strategy to make the host more secure. Because the SAFETAG framework is focused on the security of data, it's also cricial that the physicality of devices on which this data residences including the hard-wired networks through which its exchanged be not overlooked.</p>
@@ -2587,7 +2502,7 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 <ul>
 <li><strong>Physical Access to Devices:</strong> Tour the office and look for logged in devices without users, servers, network jacks, written down passwords and document how difficult it would be for a visitor or after-hours break-in to access sensitive systems. Have staff take a physical security security</li>
 <li><strong>Conduct a Hands on Device Interview/Audit:</strong> Inspect and record information on user devices (work &amp; personal) for security concerns (existance of passwords, patch levels, user privileges, drive encryption, ports/services running, anti-virus capabilities)</li>
-<li><strong>Password User Survey:</strong> Have staff take the password use survey for ALL devices used for work. <a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a><sup>,</sup><a href="#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a></li>
+<li><strong>Password User Survey:</strong> Have staff take the password use survey for ALL devices used for work. <a href="#fn42" class="footnoteRef" id="fnref42"><sup>42</sup></a><sup>,</sup><a href="#fn43" class="footnoteRef" id="fnref43"><sup>43</sup></a></li>
 </ul>
 <h3 id="outputs-6">Outputs</h3>
 <ul>
@@ -2659,17 +2574,361 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 </div>
 <h3 id="activities-7">Activities</h3>
 <div class="boxtext">
-
+<h4 id="guided-tour">Guided Tour</h4>
+<h5 id="summary-24">Summary</h5>
+<p>During this component an auditor tours the audit location(s) and flags potential risks related to physical access at that location.</p>
+<h5 id="overview-13">Overview</h5>
+<p>Have your point of contact walk you around the office (often as part of introductions on the first day) - mentally note physical security concerns. Document how difficult it would be for a visitor or after-hours break-in to access sensitive systems. Identify physical assets with sensitive content, such as:</p>
+<ul>
+<li>Networking equipment and servers</li>
+<li>User devices (workstations/laptops, smarthpones, USB drives)</li>
+<li>Sensitive information or external storage drives lying on desks</li>
+<li>Accounts/passwords written on post-its, white-boards, etc.</li>
+<li>Unattended, logged in computers</li>
+<li>Unlocked cabinets, computer rooms, or wiring closets</li>
+<li>Network ports that are not in use, especially ones not in plain sight</li>
+</ul>
+<p>This can be done remotely via secure videoconference over a smartphone or tablet that can moved around the office easily.</p>
+<p>Combining this activity with Office Mapping helps to reduce the awkwardness of taking notes while walking around the office, and if being done remotely, the two separate activities can be used to cross-verify the accuracy of each.</p>
+<h5 id="materials-needed-13">Materials Needed</h5>
+<ul>
+<li>A camera and/or notepad may be useful</li>
+<li>For remote support, a secure and portable videochat system (such as Signal) which works with the available bandwidth.</li>
+</ul>
+<h5 id="considerations-13">Considerations</h5>
+<ul>
+<li>Any physical notes taken on physical security should be destroyed. Digital notes should be kept in line with overall SAFETAG standards.</li>
+<li>Any remote communication on physical security should be done over secured channels from a private space</li>
+<li>It should be noted that SAFETAG is focused only on the digital impacts of physical security. This guide does not provide a full physical security assessment.</li>
+</ul>
+<h5 id="walkthrough-16">Walkthrough</h5>
+<p>As part of your first day, have your point of contact walk you around the office - this is primarily a chance to understand the office layout and meet the rest of the staff, but take mental note of the devices in use and laying out on desks as you walk around the office. Note as well the location and access to components such as servers and networking components. Taking actual notes may make the staff feel that you are judging them, especially if this is your first interaction -- refrain from this, and if needed, also consider a more &quot;neutral&quot; note-taking process by integrating the Office Mapping activity.</p>
+<p>If the auditor is unable to go to the office (or can only visit one of multiple offices), consider having the point of contact use a video call. You will want to have the entire staff be aware of this activity and know the person who is walking around the office. This requires sufficient bandwidth (and unmetered or low-cost) for a 1-hour video call. This could be scheduled for before or after office hours to both discover how devices are left overnight as well as reducing the impact on the network.</p>
+<p>Similarly, the in-person tour can also be done outside of normal business hours. Please note: this can damage the trust the staff has in the auditor, as well as unintentionally embarrassing specific staff members in the eyes of the point of contact. It is not recommended to do this except for organizations who have already received training and worked on improving their physical/operational security practices and face an active adversary. This could be before the staff arrives in the morning, during lunch, or after hours (perhaps have dinner with your point of contact, and come back to check the organization afterwards). This gives a clearer picture of how devices are secured outside of the work day (are desktops and laptops unsecured, still on, logged in?). Are backup drives or other storage media easily accessible? Are doors to server rooms/closets locked? Are keys to these locked cabinets/rooms visible?</p>
+<h5 id="materials-that-may-be-useful">Materials that may be useful</h5>
+<h3 id="physical-security-survey">Physical Security Survey</h3>
+<p>Do you have policies and procedures for authorizing and limiting unauthorized physical access to digital systems and the facilities in which they are housed?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Do your policies and procedures specify the methods used to control physical access to your secure areas, such as door locks, access control systems, security officers, or video monitoring?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, what are there?</p>
+<p>Is access to your computing area controlled (e.g. reception or security desk, sign-in/sign-out log, temporary/visitor badges etc)?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Are visitors escorted into and out of controlled areas?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, who is responsible for it?</p>
+<p>Are your workstations inaccessible to unauthorized users (e.g. located away from public areas)?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Is your computing area and equipment physically secured? - [ ] No - [ ] Yes</p>
+<p>If yes, how is it secured?</p>
+<p>Are there procedures in place to prevent computers from being left in a logged on state, however briefly?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, what are the procedures?</p>
+<p>Do you have procedures for protecting data during equipment repairs?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, what are the procedures?</p>
+<p>Do you have policies covering laptop security (e.g. cable lock or secure storage)?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Do you have a business continuity plan in case of serious incidents or disaster to your digital resources and is it current?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, please highlight the steps taken.</p>
+<p>Does your plan identify areas and facilities that need to be sealed off immediately in case of an emergency?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Are key personnel aware of the plan and how to respond to the emergency?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<h5 id="recommendation-11">Recommendation</h5>
+<p><strong>Office Equipment is unsecured against burglary</strong></p>
+<p>Unsecured physical network components and devices such as computers, servers, and external drives present a risk of sensitive data loss through theft, seizure, and malicious interference. Access to network compontents and servers should be limited and devices should be secured when not in use.</p>
+<p>In the event of a burglary or office raid, an attacker could easily obtain sensitive information from devices without encryption, external hard drives, and other easily accessible items. An advanced attacker could compromise the network for later surveillance.</p>
+<p><strong>Secure Devices</strong></p>
+<p><em>Lock in desks or via security cables all easily portable items</em></p>
+<p>Any device which connects to the organization's digital assets (and therefore has passwords or cached data) or stores organizational data (including backup drives, laptops, desktops, cameras, other storage media), should be secured (ideally out of sight, such as in a locked cabinet or desk drawer) when not in use to prevent theft and discourage seizure.</p>
+<p><em>Follow the Device Assessment guidelines on drive encryption.</em></p>
+<p>Encrypted drives offer the best protection against data loss from stolen or seized devices. Follow the recommendations of the Device Assessment section, paying specific attention to the need for strong passwords, automatic locking of logged-in accounts, and the importance of turning a machine off to fully benefit from drive encryption.</p>
+<p><em>Place core network components and servers in a locked space.</em></p>
+<p>Direct access to servers and network components such as routers, cablemodems, patch panels and switches provides an adversary multiple ways to extract sensitive information and cause extensive, yet hard to detect, damage. Ensuring that not only are these physically protected, but that there are organizational policies around which staff have access to them is critical - a locked cabinet that always has the key in the lock does not provide security. If a particular component needs, for example, regular rebooting, creative solutions should be found to balance security and staff needs.</p>
+<p><em>De-activate unused network ports</em></p>
+<p>Hard-wired network ports tend to connect directly into the most trusted parts of a network. De-activating any that are in public areas of the office (front desk, conference rooms, break rooms), as well as any that are not needed is recommended.</p>
 </div>
 <div class="boxtext">
 
 </div>
 <div class="boxtext">
-
+<h4 id="password-security-survey">Password Security Survey</h4>
+<h5 id="summary-25">Summary</h5>
+<p>Weak and &quot;shared&quot; passwords are prevalent - even after hundreds of well-publicized global password breaches, &quot;password&quot; and &quot;12345&quot; remain the most popular passwords. Weak wifi passwords are specifically a challenge, as wifi signals often are accessible outside of an office's physical limits, but provide full access to the private network.</p>
+<h5 id="overview-14">Overview</h5>
+<ul>
+<li>Using the password survey, determine the organization's baseline for password security</li>
+<li>If relevant, test the wireless network's password strength</li>
+</ul>
+<h5 id="materials-needed-14">Materials Needed</h5>
+<ul>
+<li>For the (most common) WPA password-based attacks, an already-prepared dictionary of words to use to attack the password will be required. See the Appendix on Audit Preparation for guidance on dictionary preparation.</li>
+<li>A Password Survey (see Appendix) for an alternate way to gather password practices</li>
+<li>The Level Up Activity, <a href="https://www.level-up.cc/leading-trainings/training-curriculum/activity/password-reverse-race">Password Reverse Race</a> provides a staff activity.</li>
+</ul>
+<h5 id="considerations-14">Considerations</h5>
+<h5 id="walkthrough-17">Walkthrough</h5>
+<p>This exercise supports the auditor in building an effective dictionary that is customized to an organization.</p>
+<p>This dictionary can then be used in a variety of ways:</p>
+<ul>
+<li>By using the examples referenced in the Network Access section, the auditor can attack weak wifi passwords, which present a non-personal and non-disruptive way to demonstrate password security problems. Weak wifi passwords are specifically a challenge, as wifi signals often are accessible outside of an office's physical limits, but provide full access to the private network.</li>
+<li>An Auditor can show or discuss their preferred customization strategy and the tools (like JtR) that automatically &quot;mutate&quot; passwords with numbers, capitals, and so on, to demnonstrate the power of a computer to quickly get around common &quot;tricks&quot;</li>
+<li>An Auditor can also use a password &quot;survey&quot; to get an understanding of password practices within the organization.</li>
+</ul>
+<p>This skillset, plus demonstration against non-invasive accounts, provides an opening for a discussion with staff on password security. See <a href="https://www.level-up.cc/leading-trainings/training-curriculum/secure-passwords">Level Up</a> for further activities and exercises around passwords.</p>
+<ul>
+<li>Download basic word lists</li>
+<li>Research dictionary needs</li>
+<li>Create custom word list</li>
+<li>Build core list(s)</li>
+<li>Attack a password hash using increasingly more time-consuming methods</li>
+</ul>
+<p>This component provides resources and recommendations on cracking passwords - both the creation of dictionaries and rules to modify those dictionaries, as well as some basic implementation as well. This is a dangerous (and in many cases, illegal) skill to use, and should be more of a guide to auditors on what password security myths do not work against modern password cracking software, and to use only with permission and only in very specific situations as a demonstration of the power of even a common laptop against weak passwords.</p>
+<p>Primarily for use in the Network Access component, building a password dictionary, understanding the ways to automatically mutate it, and running it against passwords is a useful skill to have, and to use to explain why simple passwords are insecure. This <a href="http://arstechnica.com/security/2013/10/how-the-bible-and-youtube-are-fueling-the-next-frontier-of-password-cracking/">Ars Technica article</a> provides a good insight into the path to tackle iterative password cracking using a variety of tools to meet different goals.</p>
+<p>These instructions use a small set of password cracking tools, but many are possible. If there are tools you are more familiar or comfortable with using, these by no means are required. The only constraints are to be respectful and responsible, as well as keeping focused on the overall goals and not getting bogged down.</p>
+<p>A good wordlist with a few tweaks tends to break most passwords. Using a collection of all English words, all words from the language of the organization being audited, plus a combination of all these words, plus relevant keywords, addresses, and years tends to crack most wifi passwords in a reasonable timeframe.</p>
+<p>An approach which begins with quick, but often fruitful, attacks to more and more complex (and time consuming) attacks is the most rewarding. However, after an hour or two of password hacking, the in-office time on other activities is more valuable, so admit defeat and move on. See the Recommendations section for talking points around the levels of password cracking that exist in the world. You can work on passwords offline/overnight/post-audit for report completeness.</p>
+<p>Here is a suggested path to take with suggested tools to help. You might try the first few steps in both the targeted keyword approach and the dictionary approach before moving on to the more complex mutations towards the end of each path.</p>
+<ul>
+<li>Targeted Keywords</li>
+<li>Begin with a simple combination of organizationally relevant keywords (using hashcat's combinator attack, combining your org keyword list with itself)</li>
+<li>Add in numbers/years (simple scripting, hashcat, JtR)</li>
+<li>Add in other mutators like 1337 replacements, capitalization tricks (John)</li>
+<li>Language dictionary attack (simple scripting, hashcat)</li>
+<li>Run a series of dictionary word attacks:
+<ul>
+<li>A simple language dictionary attack</li>
+<li>Add in numbers/years (simple scripting, hashcat, JtR)</li>
+<li>Add in the org keywords (a full combination creates a massive list, recommend starting with 1:1)</li>
+<li>Try other combinations of the dictionary, keywords, years</li>
+<li>Add in other mutators like 1337 replacements, capitalization tricks (John)</li>
+</ul></li>
+<li>Brute forcing (do not bother with this on-site)</li>
+<li>John's incremental modes, limited by types</li>
+<li>Crunch's raw brute-force attack (very, very time intensive - a complete waste of time without GPUs)</li>
+</ul>
+<h6 id="dictionary-research-and-creation">Dictionary Research and Creation</h6>
+<p><strong>Before you arrive on-site</strong> it is important to have your password cracking tools downloaded and relevant dictionaries ready to go, as your main demonstration and use of these tools is to gain access to the organization's network. The effectiveness of this demonstration is drastically reduced if you already have had to ask for the password to connect to the Internet and update your dictionaries, tools, or so on. Some of these files (especially larger password dictionaries) can be quite large, so downloading them in-country is not recommended.</p>
+<p>Many password dictionary sites, such as <a href="https://wiki.skullsecurity.org/Passwords">SkullSecurity</a> , maintain core dictionaries in multiple languages. If your target language is not available, some quick regular expression work can turn spell-check dictionaries (such as those used by <a href="http://extensions.libreoffice.org/extension-center?getCategories=Dictionary">LibreOffice</a> into useful word lists. It is generally useful to always test with English in addition to the target language.</p>
+<p><a href="https://www.cloudcracker.com/dictionaries.html">CloudCracker</a> and <a href="http://www.openwall.com/wordlists/">OpenWall</a> have, for a fee, well-tested password dictionaries.</p>
+<p><strong>Keyword generation</strong></p>
+<p>In addition, create a customized dictionary with words related to the subject as revealed in the Remote Assessment research: organization name, street address, phone number, email domain, wireless network name, etc. For the organization &quot;ExampleOrg , which has its offices at 123 Central St., Federal District, Countryzstan , which does human rights and journalism work and was founded in 1992, some context-based dictionary additions would be:</p>
+<pre><code>exampleorg
+example
+exa
+mple
+org
+123
+central
+federal
+district
+countryzstan
+human
+rights
+journo
+journalism
+1992
+92</code></pre>
+<p>Also add common password fragments: qwerty, 1234/5/6/7/8, and, based on field experience, four-digit dates back to the year 2001 (plus adding in the founding year of the organization). It's also useful to see what calendar system is in use at your organization's location as some cultures <a href="https://en.wikipedia.org/wiki/Calendar#Calendars_in_use">don't use Gregorian years</a>. It's quite amazing how often a recent year will be part of a wifi password -- this presentation discusses many common patterns in passwords: <a href="https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf" class="uri">https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf</a></p>
+<h6 id="optional-further-steps">Optional Further steps</h6>
+<p>Use <a href="http://digi.ninja/projects/cewl.php">CeWL</a>, to spider the organization's web properties to generate additional phrases. This list will need review, as some of the generated content is not very useful, but may be useful if the site is not in a language the auditor reads fluently.</p>
+<p>For passwords other than WPA, specific policies or patterns may help to focus your password dictionary further. <a href="https://github.com/iphelix/PACK">PACK, or Password Analysis and Cracking Toolkit</a> is a collection of utilities developed to aid in analysis of password lists in order to enhance password cracking through pattern detection of masks, rules, character-sets and other password characteristics. The toolkit generates valid input files for Hashcat family of password crackers.&quot; PACK is most useful for large sets of passwords, where it can detect patterns in already-broken passwords to help build new rules. Both password cracking tools listed here are powerful, and have slightly different abilities. The auditor should choose the one they prefer and/or the one which has the features they desire for this job.</p>
+<p><strong>Combinator Attack with scripting and Hashcat</strong></p>
+<p>One quick way to build a more complex password list is to simply double the list up (a &quot;combinator&quot; attack), so that it includes an entry for each pair of these strings:</p>
+<p>You can do a 1-way version of this list simply, such as:</p>
+<pre><code> $ for foo in `cat pwdlist.txt`; do for bar in `cat pwdlist.txt`; do printf $foo$bar&#39;\n&#39;; done; done &gt; pwdpairs.txt
+ $ cat pwdlist.txt &gt;&gt; pwdpairs.txt</code></pre>
+<p><a href="http://hashcat.net/oclhashcat/">Hashcat</a> can do this in a live attack under its &quot;combinator&quot; mode, and hashcat-utils (hiding in /usr/share/hashcat-utils/combinator.bin) provides this as a standalone tool. This provides a true combination of the list, so it exponentially increases the list size - use with caution, or use with one larger dictionary and one smaller dictionary.</p>
+<p>For example, use these combination approach on your custom dictionary (combining it with itself, creating combinations from the above list such as example92, journorights, exampleorgrights).</p>
+<pre><code>$  /usr/share/hashcat-utils/combinator.bin dict.txt dict.txt
+</code></pre>
+<p>Hashcat is extremely powerful when you have desktop computer systems to use, but has a few wordlist manipulation tools that are useful regardless.</p>
+<p>More References: (http://hashcat.net/wiki/doku.php?id=cracking_wpawpa2 , http://www.darkmoreops.com/2014/08/18/cracking-wpa2-wpa-with-hashcat-kali-linux/ )</p>
+<p><strong>Word mutation with John the Ripper (JtR)</strong></p>
+<p><a href="https://github.com/magnumripper/JohnTheRipper/commits/bleeding-jumbo">JtR</a> is a powerful tool you can use in combination of existing wordlists, but it also can add in common substitutions (people using zero for the letter &quot;o&quot;). JtR can be used to generate a static list of passwords for other programs, or it can be used directly against a password database. JtR is a bit weak combining words within a wordlist, so you should apply your customizations and any folding before moving on to JtR.</p>
+<p>You can add custom &quot;rules&quot; to aid in these substitutions - a base set is included with JtR, but a much more powerful set is added by [KoreLogic] (http://contest-2010.korelogic.com/rules.html). KoreLogic also provides a custom character set &quot;chr file&quot; that takes password frequency data from large collections of <a href="http://www.korelogic.com/tools.html">real-world passwords to speed up JtR's brute force mode</a> . This PDF presentation has a good <a href="https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf">walkthrough of how John and Kore's rules work</a></p>
+<p>Additional guides: * (http://linuxconfig.org/password-cracking-with-john-the-ripper-on-linux)</p>
+<p>The bleeding-edge jumbo version combines both the built-in rules and an optimized version of the <a href="https://github.com/kost/jtr-stuff/tree/master/rules,%20and%20http://openwall.info/wiki/john/rules%20for%20a%20description%20of%20the%20optimizations">KoreLogic rules</a>. <a href="http://contest-2010.korelogic.com/rules.html">This list of KoreLogic Rules</a> provides nice descriptions of what the KoreLogic rules do. In bleeding-jumbo, you can remove &quot;KoreLogicRules&quot;. <a href="http://backreference.org/2009/10/26/password-recovery-with-john-the-ripper/">BackReference</a> provides a great example of rules usage.</p>
+<p>Some particularly useful ones individual rulesets are: * AppendYears (appends years, from 1900 to 2019) and AppendCurrentYearSpecial (appends 2000-2019 with punctuation) * AddJustNumbers (adds 1-4 digits to the end of everything) * l33t (leet-speek combinations)</p>
+<p>There are some build-in combinations of rulesets - for example, just --rules runs john's internal collection of default rules, and --rules:KoreLogic runs a collection of the KoreLogic rules in a thoughtful order, and --rules:all is useful if you hate life.</p>
+<p>e.g. :</p>
+<pre><code>  $ john -w:dictionary.txt --rules:AppendYears --stdout</code></pre>
+<p><a href="http://www.openwall.com/john/doc/RULES.shtml">Building custom rules</a></p>
+<p><strong>PROTIP</strong> Create a dictionary with just &quot;blah&quot; and run various rules against it to understand how each ruleset or combination works. Note specifically that each rule multiplies the size of the dictionary by the number of permutations it introduces. Running the KoreLogic ruleset combination against a <strong>one word</strong> dictionary creates a list of 6,327,540 permutations on just that word.</p>
+<p><strong>Brute force, using John and crunch</strong></p>
+<p>JtR's &quot;incremental&quot; mode is essentially an optimized brute force attack, so will take a very long time for anything but the shortest passwords, or passwords where you can limit the search space to a character set: &quot;As of version 1.8.0, pre-defined incremental modes are &quot;ASCII&quot; (all 95 printable ASCII characters), &quot;LM_ASCII&quot; (for use on LM hashes), &quot;Alnum&quot; (all 62 alphanumeric characters), &quot;Alpha&quot; (all 52 letters), &quot;LowerNum&quot; (lowercase letters plus digits, for 36 total), &quot;UpperNum&quot; (uppercase letters plus digits, for 36 total), &quot;LowerSpace&quot; (lowercase letters plus space, for 27 total), &quot;Lower&quot; (lowercase letters), &quot;Upper&quot; (uppercase letters), and &quot;Digits&quot; (digits only). The supplied .chr files include data for lengths up to 13 for all of these modes except for &quot;LM_ASCII&quot; (where password portions input to the LM hash halves are assumed to be truncated at length 7) and &quot;Digits&quot; (where the supplied .chr file and pre-defined incremental mode work for lengths up to 20). Some of the many .chr files needed by these pre-defined incremental modes might not be bundled with every version of John the Ripper, being available as a separate download.&quot; (http://www.openwall.com/john/doc/MODES.shtml)</p>
+<p>As a last resort, you can try a direct brute force attack overnight or post-audit to fill in details on key strength. Crunch is a very simple but thorough approach. Given enough time it will break a password, but it's not particularly fast, even at simple passwords. You can reduce the scope of this attack (and speed it up) if you have a reason to believe the password is all lower-case, all-numeric, or so on. WPA passwords are a minimum of 8 characters, a maximum of 16, and some wifi routers will accept punctuation, but in practice these are usually just !@#$. — so:</p>
+<pre><code>$ /path/to/crunch 8 16 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$!@#$. | aircrack-ng -a 2 path/to/capture.pcap -b 00:11:22:33:44:55 -w -</code></pre>
+<p>This says to try every possible alpha-numeric combination from 8 to 16 characters. This will take a very, very, very long time.</p>
+<h6 id="material-that-may-be-useful-4">Material that may be Useful:</h6>
+<p><strong>Sample Practice</strong> For practice on any of these methods, you can use the wpa-Induction.pcap file from <a href="http://wiki.wireshark.org/SampleCaptures">Wireshark</a>.</p>
+<p><a href="https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html" class="uri">https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html</a></p>
+<p><a href="http://zed0.co.uk/crossword/" class="uri">http://zed0.co.uk/crossword/</a></p>
+<p><a href="http://www.instantcheckmate.com/crimewire/is-your-password-really-protecting-you/#lightbox/0/" class="uri">http://www.instantcheckmate.com/crimewire/is-your-password-really-protecting-you/#lightbox/0/</a></p>
+<p>Note that password cracking systems are rated on the number of password guesses they make per second. Stock laptop computers without high-end graphics cards or any other optimizations can guess 2500 passwords/second. More powerful desktop computers can test over a hundred million each second, and with graphics cards (GPUs) that rises to billions of passwords per second. (<a href="https://en.wikipedia.org/wiki/Password_cracking" class="uri">https://en.wikipedia.org/wiki/Password_cracking</a>).</p>
+<p>This website has a good explanation about how improving the complexity of a password affects how easy it is to break: <a href="http://www.lockdown.co.uk/?pg=combi" class="uri">http://www.lockdown.co.uk/?pg=combi</a>, but is using very out of date numbers - consider a basic laptop able to produce &quot;Class E&quot; attacks, and a desktop, &quot;Class F&quot;</p>
+<p><a href="http://rumkin.com/tools/password/passchk.php" class="uri">http://rumkin.com/tools/password/passchk.php</a></p>
+<p><a href="http://cyber-defense.sans.org/blog/downloads/" class="uri">http://cyber-defense.sans.org/blog/downloads/</a> has a calculator buried in the zip file &quot;scripts.zip&quot;</p>
+<p><a href="http://www.dailymail.co.uk/sciencetech/article-2331984/Think-strong-password-Hackers-crack-16-character-passwords-hour.html" class="uri">http://www.dailymail.co.uk/sciencetech/article-2331984/Think-strong-password-Hackers-crack-16-character-passwords-hour.html</a></p>
+<p><a href="https://www.grc.com/haystack.htm" class="uri">https://www.grc.com/haystack.htm</a></p>
+<p><a href="https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf" class="uri">https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf</a></p>
+<p><a href="http://www.nytimes.com/2014/11/19/magazine/the-secret-life-of-passwords.html?_r=1" class="uri">http://www.nytimes.com/2014/11/19/magazine/the-secret-life-of-passwords.html?_r=1</a></p>
+<h5 id="recommendation-12">Recommendation</h5>
+<h6 id="materials-that-may-be-useful-1">Materials that may be useful</h6>
+<h6 id="password-survey">Password Survey</h6>
+<p>How many passwords do you have to remember for accounts and devices used to do your work?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If you tried to login to your computer account right now, how many attempts do you think it would take?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>To how many people have you given your current password?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Have you ever forgotten your current password?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, how did you recover it?</p>
+<p>Have you ever forgotten old work passwords?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>If yes, how did you recover it?</p>
+<p>When you created your current password, which of the following did you do?</p>
+<ul>
+<li>[ ] I reused an old password</li>
+<li>[ ] I modified an old password</li>
+<li>[ ] I reused a password I was already using for a different account</li>
+<li>[ ] I created an entirely new password</li>
+<li>[ ] Other:</li>
+</ul>
+<p>Did you use any of the following strategies to create your current password (choose all that apply) ?</p>
+<ul>
+<li>[ ] Password based on the first letter of each word in a phrase</li>
+<li>[ ] Based on the name of someone or something</li>
+<li>[ ] Based on a word or name with numbers / symbols added to beginning or end</li>
+<li>[ ] Based on a word or name with numbers and symbols substituting for some of the letters ( e.g. '@' instead of 'a')</li>
+<li>[ ] Based on a word or name with letters missing</li>
+<li>[ ] Based on a word in a language other than English</li>
+<li>[ ] Based on a phone number</li>
+<li>[ ] Based on an address</li>
+<li>[ ] Based on a birthday</li>
+</ul>
+<p>How long is your current password (total number of characters)?</p>
+<ul>
+<li>[ ] I prefer not to answer.</li>
+</ul>
+<p>What symbols (characters other than letters and numbers) are in your password?</p>
+<ul>
+<li>[ ] I prefer not to answer.</li>
+</ul>
+<p>How many lower-case letters are in your current password?</p>
+<ul>
+<li>[ ] I prefer not to answer.</li>
+</ul>
+<p>How many upper-case letters are in your current password?</p>
+<ul>
+<li>[ ] I prefer not to answer.</li>
+</ul>
+<p>In which positions in your password are the numbers?</p>
+<ul>
+<li>[ ] I prefer not to answer.</li>
+<li>[ ] First</li>
+<li>[ ] Second</li>
+<li>[ ] Second from last</li>
+<li>[ ] Last</li>
+<li>[ ] No Numbers</li>
+<li>[ ] I prefer not to answer.</li>
+</ul>
+<p>In which positions in your password are the symbols?</p>
+<ul>
+<li>[ ] I prefer not to answer.</li>
+<li>[ ] First</li>
+<li>[ ] Second</li>
+<li>[ ] Second from last</li>
+<li>[ ] Last</li>
+<li>[ ] No Numbers</li>
+<li>[ ] I prefer not to answer.</li>
+</ul>
+<p>Have you written down your current password?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes, on paper</li>
+<li>[ ] Yes, electronically (stored in computer, phone, etc.)</li>
+<li>[ ] Other</li>
+</ul>
+<p>If you wrote down your current password how is it protected (choose all that apply) ?</p>
+<ul>
+<li>[ ] I do not protect it</li>
+<li>[ ] I stored it in an encrypted file</li>
+<li>[ ] I hid it</li>
+<li>[ ] I stored it on a computer or device protected with another password</li>
+<li>[ ] I locked up the paper</li>
+<li>[ ] I always keep the password with me</li>
+<li>[ ] I wrote down a reminder instead of the actual password</li>
+<li>[ ] Other</li>
+</ul>
+<p>Do you have a set of passwords you reuse in different places?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
+<p>Do you have a password that you use for different accounts with a slight modification for each account?</p>
+<ul>
+<li>[ ] No</li>
+<li>[ ] Yes</li>
+</ul>
 </div>
 <div class="boxtext">
 <h3 id="a-day-in-the-life">A Day in the Life</h3>
 <p>Covered in full in User Device Assessment:</p>
+<ul>
+<li>Integrated with other activities/interactions, interview staff on their usage of technology and remote services</li>
+</ul>
 </div>
 <div class="boxtext">
 <h4 id="network-mapping-1">Network Mapping</h4>
@@ -2685,6 +2944,18 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 <div class="boxtext">
 <h3 id="physical-security-guided-tour">Physical Security Guided Tour</h3>
 <p>Covered in full in Physical Assessment:</p>
+<p>Have your point of contact walk you around the office (often as part of introductions on the first day) - mentally note physical security concerns. Document how difficult it would be for a visitor or after-hours break-in to access sensitive systems. Identify physical assets with sensitive content, such as:</p>
+<ul>
+<li>Networking equipment and servers</li>
+<li>User devices (workstations/laptops, smarthpones, USB drives)</li>
+<li>Sensitive information or external storage drives lying on desks</li>
+<li>Accounts/passwords written on post-its, white-boards, etc.</li>
+<li>Unattended, logged in computers</li>
+<li>Unlocked cabinets, computer rooms, or wiring closets</li>
+<li>Network ports that are not in use, especially ones not in plain sight</li>
+</ul>
+<p>This can be done remotely via secure videoconference over a smartphone or tablet that can moved around the office easily.</p>
+<p>Combining this activity with Office Mapping helps to reduce the awkwardness of taking notes while walking around the office, and if being done remotely, the two separate activities can be used to cross-verify the accuracy of each.</p>
 </div>
 
 <!-- User Device Assessment -->
@@ -2707,7 +2978,7 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 <h3 id="approaches-7">Approaches</h3>
 <ul>
 <li><strong>Conduct a Hands on Device Interview/Audit:</strong> Inspect and record information on user devices (work &amp; personal) for security concerns (patch levels, user privileges, drive encryption, ports/services running, anti-virus capabilities)</li>
-<li><strong>Password User Survey:</strong> Have staff take the password use survey for ALL devices used for work. <a href="#fn47" class="footnoteRef" id="fnref47"><sup>47</sup></a><sup>,</sup><a href="#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a></li>
+<li><strong>Password User Survey:</strong> Have staff take the password use survey for ALL devices used for work. <a href="#fn44" class="footnoteRef" id="fnref44"><sup>44</sup></a><sup>,</sup><a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a></li>
 <li><strong>A Day In the Life:</strong> Have staff walk you through a usual &quot;day in their life&quot; showing you what devices they use, how they use them, and what data they have to interact with to conduct their work.</li>
 </ul>
 <h3 id="outputs-7">Outputs</h3>
@@ -2773,10 +3044,10 @@ ssh -R 2200:localhost:22 auditee1@safetag-audit.org</code></pre>
 <p>This is used to develop a report component exposing how un-updated software can lead to large vulnerabilities.</p>
 <h5 id="overview-15">Overview</h5>
 <ul>
-<li>Identify what privilege level services are running under -- Are users using accounts with admin privelges, or are they using another user and have to type in a password to get admin rights? <a href="#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a></li>
-<li>Check for existence and status of anti-virus (and anti-malware tools) on the device. <a href="#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a></li>
-<li>Record the version and patch levels of software on the device. <a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a></li>
-<li>Identify what level of encryption is being used and is available for data storage on the device. <a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a></li>
+<li>Identify what privilege level services are running under -- Are users using accounts with admin privelges, or are they using another user and have to type in a password to get admin rights? <a href="#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a></li>
+<li>Check for existence and status of anti-virus (and anti-malware tools) on the device. <a href="#fn47" class="footnoteRef" id="fnref47"><sup>47</sup></a></li>
+<li>Record the version and patch levels of software on the device. <a href="#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a></li>
+<li>Identify what level of encryption is being used and is available for data storage on the device. <a href="#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a></li>
 <li>Using the list of software versions and patches identify attacks and, if possible, identified malware that devices in the office are vulnerable to.</li>
 </ul>
 <h5 id="materials-needed-15">Materials Needed</h5>
@@ -3037,11 +3308,11 @@ Download: http://breaknenter.org/projects/inception | Twitter: @breaknenter
 [*] BRRRRRRRAAAAAWWWWRWRRRMRMRMMRMRMMMMM!!!</code></pre>
 <p><em>In the case of the laptops tested, Inception took approximately two minutes to reach the final, somewhat self-congratulatory line shown above. At that point, we were able to login using any password. (Entering “asdf” worked just fine, and gave us full access to all data on the computer.) Inception works by temporarily replacing authentication code using the Firewire’s protocol’s direct memory access (DMA). After a reboot, everything is restored to its original state.</em></p>
 <p>Once again, it is worth noting that successful mitigation of this issue requires a combination of technology (data encryption) and some level of behavior change (shutting down laptops at the end of the day, when traveling and at any time when confiscation, theft, loss or tampering are particularly likely.)</p>
-<h5 id="material-that-may-be-useful-4">Material that may be Useful:</h5>
+<h5 id="material-that-may-be-useful-5">Material that may be Useful:</h5>
 <h5 id="recommendation-15">Recommendation</h5>
 </div>
 <div class="boxtext">
-<h4 id="password-security-survey">Password Security Survey</h4>
+<h4 id="password-security-survey-1">Password Security Survey</h4>
 <h5 id="summary-30">Summary</h5>
 <p>Weak and &quot;shared&quot; passwords are prevalent - even after hundreds of well-publicized global password breaches, &quot;password&quot; and &quot;12345&quot; remain the most popular passwords. Weak wifi passwords are specifically a challenge, as wifi signals often are accessible outside of an office's physical limits, but provide full access to the private network.</p>
 <h5 id="overview-18">Overview</h5>
@@ -3096,7 +3367,7 @@ Download: http://breaknenter.org/projects/inception | Twitter: @breaknenter
 <li>John's incremental modes, limited by types</li>
 <li>Crunch's raw brute-force attack (very, very time intensive - a complete waste of time without GPUs)</li>
 </ul>
-<h6 id="dictionary-research-and-creation">Dictionary Research and Creation</h6>
+<h6 id="dictionary-research-and-creation-1">Dictionary Research and Creation</h6>
 <p><strong>Before you arrive on-site</strong> it is important to have your password cracking tools downloaded and relevant dictionaries ready to go, as your main demonstration and use of these tools is to gain access to the organization's network. The effectiveness of this demonstration is drastically reduced if you already have had to ask for the password to connect to the Internet and update your dictionaries, tools, or so on. Some of these files (especially larger password dictionaries) can be quite large, so downloading them in-country is not recommended.</p>
 <p>Many password dictionary sites, such as <a href="https://wiki.skullsecurity.org/Passwords">SkullSecurity</a> , maintain core dictionaries in multiple languages. If your target language is not available, some quick regular expression work can turn spell-check dictionaries (such as those used by <a href="http://extensions.libreoffice.org/extension-center?getCategories=Dictionary">LibreOffice</a> into useful word lists. It is generally useful to always test with English in addition to the target language.</p>
 <p><a href="https://www.cloudcracker.com/dictionaries.html">CloudCracker</a> and <a href="http://www.openwall.com/wordlists/">OpenWall</a> have, for a fee, well-tested password dictionaries.</p>
@@ -3119,7 +3390,7 @@ journalism
 1992
 92</code></pre>
 <p>Also add common password fragments: qwerty, 1234/5/6/7/8, and, based on field experience, four-digit dates back to the year 2001 (plus adding in the founding year of the organization). It's also useful to see what calendar system is in use at your organization's location as some cultures <a href="https://en.wikipedia.org/wiki/Calendar#Calendars_in_use">don't use Gregorian years</a>. It's quite amazing how often a recent year will be part of a wifi password -- this presentation discusses many common patterns in passwords: <a href="https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf" class="uri">https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf</a></p>
-<h6 id="optional-further-steps">Optional Further steps</h6>
+<h6 id="optional-further-steps-1">Optional Further steps</h6>
 <p>Use <a href="http://digi.ninja/projects/cewl.php">CeWL</a>, to spider the organization's web properties to generate additional phrases. This list will need review, as some of the generated content is not very useful, but may be useful if the site is not in a language the auditor reads fluently.</p>
 <p>For passwords other than WPA, specific policies or patterns may help to focus your password dictionary further. <a href="https://github.com/iphelix/PACK">PACK, or Password Analysis and Cracking Toolkit</a> is a collection of utilities developed to aid in analysis of password lists in order to enhance password cracking through pattern detection of masks, rules, character-sets and other password characteristics. The toolkit generates valid input files for Hashcat family of password crackers.&quot; PACK is most useful for large sets of passwords, where it can detect patterns in already-broken passwords to help build new rules. Both password cracking tools listed here are powerful, and have slightly different abilities. The auditor should choose the one they prefer and/or the one which has the features they desire for this job.</p>
 <p><strong>Combinator Attack with scripting and Hashcat</strong></p>
@@ -3149,7 +3420,7 @@ journalism
 <p>As a last resort, you can try a direct brute force attack overnight or post-audit to fill in details on key strength. Crunch is a very simple but thorough approach. Given enough time it will break a password, but it's not particularly fast, even at simple passwords. You can reduce the scope of this attack (and speed it up) if you have a reason to believe the password is all lower-case, all-numeric, or so on. WPA passwords are a minimum of 8 characters, a maximum of 16, and some wifi routers will accept punctuation, but in practice these are usually just !@#$. — so:</p>
 <pre><code>$ /path/to/crunch 8 16 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890$!@#$. | aircrack-ng -a 2 path/to/capture.pcap -b 00:11:22:33:44:55 -w -</code></pre>
 <p>This says to try every possible alpha-numeric combination from 8 to 16 characters. This will take a very, very, very long time.</p>
-<h6 id="material-that-may-be-useful-5">Material that may be Useful:</h6>
+<h6 id="material-that-may-be-useful-6">Material that may be Useful:</h6>
 <p><strong>Sample Practice</strong> For practice on any of these methods, you can use the wpa-Induction.pcap file from <a href="http://wiki.wireshark.org/SampleCaptures">Wireshark</a>.</p>
 <p><a href="https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html" class="uri">https://www.schneier.com/blog/archives/2014/03/choosing_secure_1.html</a></p>
 <p><a href="http://zed0.co.uk/crossword/" class="uri">http://zed0.co.uk/crossword/</a></p>
@@ -3163,8 +3434,8 @@ journalism
 <p><a href="https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf" class="uri">https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf</a></p>
 <p><a href="http://www.nytimes.com/2014/11/19/magazine/the-secret-life-of-passwords.html?_r=1" class="uri">http://www.nytimes.com/2014/11/19/magazine/the-secret-life-of-passwords.html?_r=1</a></p>
 <h5 id="recommendation-16">Recommendation</h5>
-<h6 id="materials-that-may-be-useful">Materials that may be useful</h6>
-<h6 id="password-survey">Password Survey</h6>
+<h6 id="materials-that-may-be-useful-2">Materials that may be useful</h6>
+<h6 id="password-survey-1">Password Survey</h6>
 <p>How many passwords do you have to remember for accounts and devices used to do your work?</p>
 <ul>
 <li>[ ] No</li>
@@ -3353,7 +3624,7 @@ journalism
 <li><p><em>Standard:</em> <a href="http://www.pentest-standard.org/index.php/Vulnerability_Analysis#Research">&quot;Vulnerability Analysis - Research Phase&quot;</a> (Penetration Testing Execution Standard)</p></li>
 <li><p><em>Framework:</em> <a href="http://www.vulnerabilityassessment.co.uk/Penetration%20Test.html#FMFreemind_Link_1513945467FM">&quot;Vulnerability Assessment&quot;</a> (http://www.vulnerabilityassessment.co.uk)</p></li>
 <li><p><em>Resource:</em> <a href="#vulnerability-databases">Vulnerability Databases</a> (SAFETAG)</p></li>
-<li><p><em>Security Advisories:</em> <a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a><sup>,</sup><a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a><sup>,</sup><a href="#fn55" class="footnoteRef" id="fnref55"><sup>55</sup></a><sup>,</sup><a href="#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a><sup>,</sup><a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a><sup>,</sup><a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a></p></li>
+<li><p><em>Security Advisories:</em> <a href="#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a><sup>,</sup><a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a><sup>,</sup><a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a><sup>,</sup><a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a><sup>,</sup><a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a><sup>,</sup><a href="#fn55" class="footnoteRef" id="fnref55"><sup>55</sup></a></p></li>
 </ul>
 <h4 id="vulnerability-databases">Vulnerability Databases</h4>
 <ul>
@@ -3366,7 +3637,7 @@ journalism
 <li><p><em>Database</em> <a href="http://www.exploit-db.com/">&quot;The Exploit Database&quot;</a></p></li>
 <li><p><em>Database</em> <a href="http://www.securityfocus.com/">&quot;Security Focus Vulnerability Search&quot;</a></p></li>
 <li><p><em>Poster</em> <a href="https://www.sans.org/security-resources/posters/ultimate-pen-test-2013-45">Ultimate Pen Test 2013</a> (SANS Institute)</p></li>
-<li><p><em>Security Advisories</em> <a href="#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a><sup>,</sup><a href="#fn60" class="footnoteRef" id="fnref60"><sup>60</sup></a><sup>,</sup><a href="#fn61" class="footnoteRef" id="fnref61"><sup>61</sup></a><sup>,</sup><a href="#fn62" class="footnoteRef" id="fnref62"><sup>62</sup></a><sup>,</sup><a href="#fn63" class="footnoteRef" id="fnref63"><sup>63</sup></a><sup>,</sup><a href="#fn64" class="footnoteRef" id="fnref64"><sup>64</sup></a></p></li>
+<li><p><em>Security Advisories</em> <a href="#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a><sup>,</sup><a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a><sup>,</sup><a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a><sup>,</sup><a href="#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a><sup>,</sup><a href="#fn60" class="footnoteRef" id="fnref60"><sup>60</sup></a><sup>,</sup><a href="#fn61" class="footnoteRef" id="fnref61"><sup>61</sup></a></p></li>
 </ul>
 <h4 id="website-vulnerability-scanning">Website Vulnerability Scanning</h4>
 <ul>
@@ -3402,7 +3673,7 @@ journalism
 <h4 id="vulnerability-scanning">Vulnerability Scanning</h4>
 <h5 id="summary-32">Summary</h5>
 <p>While much of SAFETAG focuses on digital security challenges within and around the office, remote attacks on the organization's website, extranets, and unintended information available from &quot;open sources&quot; all pose real threats and deserve significant attention. SAFETAG takes great care to take a very passive approach to this work, especially when done off-site, so as not to have unintended consequences on the organization's infrastructure or undermine operational security concerns.</p>
-<p>This activity uses active research and scanning to detect known vulnerabilities in external and key internal services. Usually penetration tests exploit possible vulnerabilities to confirm their existence. <a href="#fn65" class="footnoteRef" id="fnref65"><sup>65</sup></a> But, the use of exploits puts the organization's systems at a level of increased risk <a href="#fn66" class="footnoteRef" id="fnref66"><sup>66</sup></a> that is unacceptable when neither the organization nor the auditor has the time or finances to address the issue. The SAFETAG methodology only uses relatively safe exploitation of vulnerabilities for targeted outcomes. For instance, cracking the wireless access point password allows us to demonstrate the importance of good passwords without singling out any individual's passwords. <a href="#fn67" class="footnoteRef" id="fnref67"><sup>67</sup></a></p>
+<p>This activity uses active research and scanning to detect known vulnerabilities in external and key internal services. Usually penetration tests exploit possible vulnerabilities to confirm their existence. <a href="#fn62" class="footnoteRef" id="fnref62"><sup>62</sup></a> But, the use of exploits puts the organization's systems at a level of increased risk <a href="#fn63" class="footnoteRef" id="fnref63"><sup>63</sup></a> that is unacceptable when neither the organization nor the auditor has the time or finances to address the issue. The SAFETAG methodology only uses relatively safe exploitation of vulnerabilities for targeted outcomes. For instance, cracking the wireless access point password allows us to demonstrate the importance of good passwords without singling out any individual's passwords. <a href="#fn64" class="footnoteRef" id="fnref64"><sup>64</sup></a></p>
 <h5 id="overview-19">Overview</h5>
 <ul>
 <li>Identify services being hosted or used by an organization</li>
@@ -3693,7 +3964,7 @@ openvas-start</code></pre></li>
 <h5 id="materials-needed-23">Materials Needed</h5>
 <h5 id="considerations-23">Considerations</h5>
 <h5 id="walkthrough-26">Walkthrough</h5>
-<h5 id="material-that-may-be-useful-6">Material that may be Useful:</h5>
+<h5 id="material-that-may-be-useful-7">Material that may be Useful:</h5>
 <ul>
 <li><p><em>Search Engine:</em> <a href="http://www.routerpasswords.com/">“Router Default Password Search”</a> (RouterPasswords.com)</p></li>
 <li><p><em>Framework:</em> <a href="https://github.com/hackatom/routersploit">“Router Exploitation Framwork”</a></p></li>
@@ -3729,7 +4000,7 @@ A common fear is forgetting the new router password. A password management syste
 <ul>
 <li><strong>Data Mapping Activity:</strong> Have staff identify where that data is currently (what devices/physical locations), who has access (physical, login, permissions), and who needs to have access to get the organizations work completed.</li>
 <li><strong>Risks of Data Lost and Found Activity:</strong> Have rank the impact if different data within the organization was lost, and if adversaries gained access to that data.</li>
-<li><strong>Private Data Activity:</strong> Guide staff through an activity to have them list private data within the organization <a href="#fn68" class="footnoteRef" id="fnref68"><sup>68</sup></a></li>
+<li><strong>Private Data Activity:</strong> Guide staff through an activity to have them list private data within the organization <a href="#fn65" class="footnoteRef" id="fnref65"><sup>65</sup></a></li>
 </ul>
 <p>If it was not possible to conduct these activities in person, you can conduct them remotely through applying one of the remote facilitation approaches described in the <a href="#appendix-remote-facilitation">Remote Facilitation</a> appendix.</p>
 <h3 id="outputs-9">Outputs</h3>
@@ -3905,7 +4176,7 @@ A common fear is forgetting the new router password. A password management syste
 <div class="boxtext">
 <h4 id="private-data">Private Data</h4>
 <h5 id="summary-40">Summary</h5>
-<p>Guide staff through an activity to have them list private data within the organization (e.g. Using the &quot;personal information to keep private&quot; handout. <a href="#fn69" class="footnoteRef" id="fnref69"><sup>69</sup></a>)</p>
+<p>Guide staff through an activity to have them list private data within the organization (e.g. Using the &quot;personal information to keep private&quot; handout. <a href="#fn66" class="footnoteRef" id="fnref66"><sup>66</sup></a>)</p>
 <h5 id="overview-26">Overview</h5>
 <h5 id="materials-needed-26">Materials Needed</h5>
 <h5 id="considerations-26">Considerations</h5>
@@ -3977,7 +4248,7 @@ A common fear is forgetting the new router password. A password management syste
 </div>
 <h3 id="activities-11">Activities</h3>
 <div class="boxtext">
-<h4 id="guided-tour">Guided Tour</h4>
+<h4 id="guided-tour-1">Guided Tour</h4>
 <h5 id="summary-42">Summary</h5>
 <p>During this component an auditor tours the audit location(s) and flags potential risks related to physical access at that location.</p>
 <h5 id="overview-27">Overview</h5>
@@ -4008,8 +4279,8 @@ A common fear is forgetting the new router password. A password management syste
 <p>As part of your first day, have your point of contact walk you around the office - this is primarily a chance to understand the office layout and meet the rest of the staff, but take mental note of the devices in use and laying out on desks as you walk around the office. Note as well the location and access to components such as servers and networking components. Taking actual notes may make the staff feel that you are judging them, especially if this is your first interaction -- refrain from this, and if needed, also consider a more &quot;neutral&quot; note-taking process by integrating the Office Mapping activity.</p>
 <p>If the auditor is unable to go to the office (or can only visit one of multiple offices), consider having the point of contact use a video call. You will want to have the entire staff be aware of this activity and know the person who is walking around the office. This requires sufficient bandwidth (and unmetered or low-cost) for a 1-hour video call. This could be scheduled for before or after office hours to both discover how devices are left overnight as well as reducing the impact on the network.</p>
 <p>Similarly, the in-person tour can also be done outside of normal business hours. Please note: this can damage the trust the staff has in the auditor, as well as unintentionally embarrassing specific staff members in the eyes of the point of contact. It is not recommended to do this except for organizations who have already received training and worked on improving their physical/operational security practices and face an active adversary. This could be before the staff arrives in the morning, during lunch, or after hours (perhaps have dinner with your point of contact, and come back to check the organization afterwards). This gives a clearer picture of how devices are secured outside of the work day (are desktops and laptops unsecured, still on, logged in?). Are backup drives or other storage media easily accessible? Are doors to server rooms/closets locked? Are keys to these locked cabinets/rooms visible?</p>
-<h5 id="materials-that-may-be-useful-1">Materials that may be useful</h5>
-<h3 id="physical-security-survey">Physical Security Survey</h3>
+<h5 id="materials-that-may-be-useful-3">Materials that may be useful</h5>
+<h3 id="physical-security-survey-1">Physical Security Survey</h3>
 <p>Do you have policies and procedures for authorizing and limiting unauthorized physical access to digital systems and the facilities in which they are housed?</p>
 <ul>
 <li>[ ] No</li>
@@ -4491,7 +4762,7 @@ A common fear is forgetting the new router password. A password management syste
 <h3 id="summary-48">Summary</h3>
 <p>This component allows an auditor to lead the host organization's staff in a series of activities to identify and prioritize the processes that are critical for the organization to carry out its work. These activities will also reveal the consequences if those critical processes were interrupted or exposed to a malicious actor. This results in the staff creating a risk matrix which is used as the foundation of the auditor's recommendations.</p>
 <h3 id="purpose-12">Purpose</h3>
-<p>Having the host organization central to the risk assessment process allows the auditor to put their threats and recommendations into the host's own narrative. With greater ownership of the process the staff will be more engaged in addressing the threats identified when the audit is complete. <a href="#fn70" class="footnoteRef" id="fnref70"><sup>70</sup></a> By engaging as many staff as possible the auditor also is providing a framework for staff to examine future concerns when the auditor is gone. The existing in/formal security practices captured during this process will be used to remove organizational and psyco-social barriers to starting new practices.</p>
+<p>Having the host organization central to the risk assessment process allows the auditor to put their threats and recommendations into the host's own narrative. With greater ownership of the process the staff will be more engaged in addressing the threats identified when the audit is complete. <a href="#fn67" class="footnoteRef" id="fnref67"><sup>67</sup></a> By engaging as many staff as possible the auditor also is providing a framework for staff to examine future concerns when the auditor is gone. The existing in/formal security practices captured during this process will be used to remove organizational and psyco-social barriers to starting new practices.</p>
 <h3 id="the-flow-of-information-11">The Flow of Information</h3>
 <figure>
 <img src="images/info_flows/risk_modeling.svg" alt="Risk Modeling Information Flow" /><figcaption>Risk Modeling Information Flow</figcaption>
@@ -4692,7 +4963,7 @@ This activity can lead to feelings of hopelessness; it is important to remind th
 <div class="boxtext">
 <h4 id="risk-modeling-using-the-pre-mortum-strategy">Risk Modeling Using the Pre-Mortum Strategy</h4>
 <h5 id="summary-50">Summary</h5>
-<p>The pre-mortum strategy was devised to take participants out of a perspective of defending their plans and strategies and shielding themselves from flaws. They are given &quot;a perspective where they [are] actively searching for flaws in their own plan.&quot; <a href="#fn71" class="footnoteRef" id="fnref71"><sup>71</sup></a>.</p>
+<p>The pre-mortum strategy was devised to take participants out of a perspective of defending their plans and strategies and shielding themselves from flaws. They are given &quot;a perspective where they [are] actively searching for flaws in their own plan.&quot; <a href="#fn68" class="footnoteRef" id="fnref68"><sup>68</sup></a>.</p>
 <h5 id="overview-34">Overview</h5>
 <ul>
 <li>&quot;Pre-Mortum&quot; Activity</li>
@@ -4729,9 +5000,9 @@ This activity can lead to feelings of hopelessness; it is important to remind th
 <li>Prepare a flipchart / space on the white-board to keep track of process', threats, impacts, and adversaries that are identified during other activities. Participants can easily get ahead of the process as they explore individual ideas. Keeping a space for these &quot;upcoming&quot; activities will help re-center them on the activity at hand.</li>
 </ul>
 <h4 id="conducting-the-activity-1">Conducting the Activity</h4>
-<p><strong>Pre-Mortum Strategy: (30 Minutes)</strong> The pre-mortum strategy was devised to take participants out of a perspective of defending their plans and strategies and shielding themselves from flaws. They are given &quot;a perspective where they [are] actively searching for flaws in their own plan.&quot; <a href="#fn72" class="footnoteRef" id="fnref72"><sup>72</sup></a></p>
+<p><strong>Pre-Mortum Strategy: (30 Minutes)</strong> The pre-mortum strategy was devised to take participants out of a perspective of defending their plans and strategies and shielding themselves from flaws. They are given &quot;a perspective where they [are] actively searching for flaws in their own plan.&quot; <a href="#fn69" class="footnoteRef" id="fnref69"><sup>69</sup></a></p>
 <ul>
-<li>Explain the pre-mortum activity. The participants are to imagine that it is months into the future and they have continued doing their work as normal. And something happened that left them entirely unable to function or functioning at a very poor level. &quot;That is all they know; they have to explain what has happened.&quot; <a href="#fn73" class="footnoteRef" id="fnref73"><sup>73</sup></a></li>
+<li>Explain the pre-mortum activity. The participants are to imagine that it is months into the future and they have continued doing their work as normal. And something happened that left them entirely unable to function or functioning at a very poor level. &quot;That is all they know; they have to explain what has happened.&quot; <a href="#fn70" class="footnoteRef" id="fnref70"><sup>70</sup></a></li>
 <li>Create a broad list of possible explanations for what has happened.</li>
 <li>Identify the most likely explanations.</li>
 <li>List the process' that would have to fail for those causes to take effect.</li>
@@ -5019,7 +5290,7 @@ This activity can lead to feelings of hopelessness as well as stir up direct fea
 <li><a href="https://www.amnesty.org/en/news/regional">Amnesty International regional news on human rights</a></li>
 <li><a href="http://www.hrw.org/regions">Human Rights Watch - Browse by Region</a></li>
 </ul></li>
-<li>Transparency <a href="#fn74" class="footnoteRef" id="fnref74"><sup>74</sup></a>
+<li>Transparency <a href="#fn71" class="footnoteRef" id="fnref71"><sup>71</sup></a>
 <ul>
 <li><a href="http://www.transparency.org/cpi2013/results/">Corruption Perception Index</a></li>
 </ul></li>
@@ -5048,11 +5319,11 @@ This activity can lead to feelings of hopelessness as well as stir up direct fea
 </ul>
 <h4 id="threat-research-by-method">Threat research by method</h4>
 <ul>
-<li>Country threat reports <a href="#fn75" class="footnoteRef" id="fnref75"><sup>75</sup></a><sup>,</sup><a href="#fn76" class="footnoteRef" id="fnref76"><sup>76</sup></a></li>
+<li>Country threat reports <a href="#fn72" class="footnoteRef" id="fnref72"><sup>72</sup></a><sup>,</sup><a href="#fn73" class="footnoteRef" id="fnref73"><sup>73</sup></a></li>
 <li>Examine Transparency Reports
 <ul>
-<li>Find most used sites in region. <a href="#fn77" class="footnoteRef" id="fnref77"><sup>77</sup></a></li>
-<li>Search for transparency reports for most used sites. <a href="#fn78" class="footnoteRef" id="fnref78"><sup>78</sup></a></li>
+<li>Find most used sites in region. <a href="#fn74" class="footnoteRef" id="fnref74"><sup>74</sup></a></li>
+<li>Search for transparency reports for most used sites. <a href="#fn75" class="footnoteRef" id="fnref75"><sup>75</sup></a></li>
 </ul></li>
 </ul>
 <h4 id="general-threats-by-region">General Threats by Region</h4>
@@ -5210,7 +5481,7 @@ This activity can lead to feelings of hopelessness as well as stir up direct fea
 <p><strong>Impact Identification: (30 minutes per process)</strong> This exercise has the trainee lead the participants on a brainstorming of hypothetical consequences (impacts) when the threats identified earlier occur.</p>
 <ul>
 <li>Give participants a pen and three sticky note pads.</li>
-<li>Explain the topic and the categories. <a href="#fn79" class="footnoteRef" id="fnref79"><sup>79</sup></a>
+<li>Explain the topic and the categories. <a href="#fn76" class="footnoteRef" id="fnref76"><sup>76</sup></a>
 <ul>
 <li>Staff/People - (which includes families, friends, and beneficiaries): temporary or permanent physical injury, temporary or longer-term psychological damage, death, legal costs, cost of medical treatment, loss of morale or trust in management.</li>
 <li>Organization - loss of or damage to assets, operational inefficiency, loss of program quality or outright suspension; loss of reputation; loss of funding.</li>
@@ -5234,7 +5505,7 @@ This activity can lead to feelings of hopelessness as well as stir up direct fea
 </ul>
 <p><strong>Adversary Exploration (Likelyhood):</strong></p>
 <ul>
-<li>Explain the topic and the categories. <a href="#fn80" class="footnoteRef" id="fnref80"><sup>80</sup></a>
+<li>Explain the topic and the categories. <a href="#fn77" class="footnoteRef" id="fnref77"><sup>77</sup></a>
 <ul>
 <li>&quot;History – a past incidence or pattern of attacks on similar organizations.&quot;</li>
 <li>&quot;Intent – specific threats, a demonstrated intention or mindset to attack.&quot;</li>
@@ -5722,7 +5993,7 @@ This activity can lead to feelings of hopelessness as well as stir up direct fea
 <h4 id="regional-context-research-1">Regional Context Research</h4>
 <p>Covered in full in Capacity Assessment:</p>
 <ul>
-<li>Identify any legal risks associated with conducting the audit (Secure communications and storage, network forensics, device exploitation, digital security training.) <a href="#fn81" class="footnoteRef" id="fnref81"><sup>81</sup></a></li>
+<li>Identify any legal risks associated with conducting the audit (Secure communications and storage, network forensics, device exploitation, digital security training.) <a href="#fn78" class="footnoteRef" id="fnref78"><sup>78</sup></a></li>
 <li>Determine the sensitivity of the type of work the organization conducts and if its work attracts additional potential threat actors.</li>
 <li>Identify potential adversaries not identified in interviews including domestic or international governments and other, non-state actors (organized crime, corporations, competition, etc).</li>
 <li>Identify capacity and willingness of potential adversaries to act against the organization.</li>
@@ -6462,7 +6733,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <ul>
 <li><p><em>Guide:</em> <a href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf#page=62">&quot;Mitigation Recommendation&quot;</a> (NIST SP 800-115)</p></li>
 <li><p><em>Overview:</em> <a href="https://www.sans.org/reading-room/whitepapers/auditing/introduction-information-system-risk-management-1204#page=12">&quot;How Is Risk Managed?&quot;</a> (An Introduction to Information System Risk Management)</p></li>
-<li><p><em>Book:</em> &quot;Digging Deeper into Mitigations - p. 130&quot; (Threat Modeling - Adam Shostack)<a href="#fn82" class="footnoteRef" id="fnref82"><sup>82</sup></a></p></li>
+<li><p><em>Book:</em> &quot;Digging Deeper into Mitigations - p. 130&quot; (Threat Modeling - Adam Shostack)<a href="#fn79" class="footnoteRef" id="fnref79"><sup>79</sup></a></p></li>
 </ul>
 </div>
 <h3 id="activities-18">Activities</h3>
@@ -6514,7 +6785,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 
 <!-- Roadmap Development -->
 <h2 id="roadmap-development">Roadmap Development</h2>
-<p>&quot;<em>Finding threats against arbitrary things is fun, but when you're building some-thing with many moving parts, you need to know where to start, and how to approach it.</em>&quot; - <em>Threat Modeling: Designing for Security</em> by Adam Shostack <a href="#fn83" class="footnoteRef" id="fnref83"><sup>83</sup></a></p>
+<p>&quot;<em>Finding threats against arbitrary things is fun, but when you're building some-thing with many moving parts, you need to know where to start, and how to approach it.</em>&quot; - <em>Threat Modeling: Designing for Security</em> by Adam Shostack <a href="#fn80" class="footnoteRef" id="fnref80"><sup>80</sup></a></p>
 <h3 id="summary-71">Summary</h3>
 <p>This component consists of an auditor sorting their recommendations in relation to the organizations threats and capacity. The auditor prioritizes vulnerabilities, weighs the implementation costs of recommendations and then creates an actionable roadmap for the organization to make their own informed choices about possible next steps as they move forward.</p>
 <h3 id="purpose-19">Purpose</h3>
@@ -6549,7 +6820,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li><p><em>Guide:</em> <a href="https://www.eisf.eu/wp-content/uploads/2014/09/0593-EISF-2010-Risk-Thresholds-in-Humanitarian-Assistance.pdf">&quot;Risk Thresholds in Humanitarian Assistance&quot;</a> (eisf)</p></li>
 <li><p><em>Guide:</em> <a href="https://www.eisf.eu/library/guide-to-security-management-planning/">&quot;Guide to Security Management Planning&quot;</a> (eisf)</p></li>
 <li><p><em>Guide:</em> <a href="https://www.eisf.eu/wp-content/uploads/2014/09/0241-Garrett-2005-Security-awareness-culture.pdf">&quot;Developing a Security-Awareness Culture - Improving Security Decision Making&quot;</a> (SANS InfoSec Reading Room)</p></li>
-<li><p><em>Book:</em> &quot;The Order of Mitigation - p. 131&quot; (Threat Modeling - Adam Shostack)<a href="#fn84" class="footnoteRef" id="fnref84"><sup>84</sup></a></p></li>
+<li><p><em>Book:</em> &quot;The Order of Mitigation - p. 131&quot; (Threat Modeling - Adam Shostack)<a href="#fn81" class="footnoteRef" id="fnref81"><sup>81</sup></a></p></li>
 </ul>
 <h4 id="determining-the-urgency-of-a-vulnerability">Determining the urgency of a vulnerability</h4>
 </div>
@@ -6557,7 +6828,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 
 <!-- Reporting Creation -->
 <h2 id="report-creation">Report Creation</h2>
-<p>&quot;<em>A good analysis might turn the threats into stories so they stay close to mind as software is being written or reviewed. A good story contains conflict, and conflict has sides. In this case, you are on one side, and an attacker is the other side.</em>&quot; - <em>Threat Modeling: Designing for Security</em> <a href="#fn85" class="footnoteRef" id="fnref85"><sup>85</sup></a></p>
+<p>&quot;<em>A good analysis might turn the threats into stories so they stay close to mind as software is being written or reviewed. A good story contains conflict, and conflict has sides. In this case, you are on one side, and an attacker is the other side.</em>&quot; - <em>Threat Modeling: Designing for Security</em> <a href="#fn82" class="footnoteRef" id="fnref82"><sup>82</sup></a></p>
 <h3 id="summary-72">Summary</h3>
 <p>This component consists of an auditor compiling their audit notes and recommendations into a comprehensive set of documents the shows the current state of security, the process by which the auditor came to that assessment, and recommendations that will guide the hosts progression to meet their security goals.</p>
 <h3 id="purpose-20">Purpose</h3>
@@ -6574,7 +6845,7 @@ vulnerability"](https://www.eisf.eu/wp-content/uploads/2014/09/0601-CPNI-2009-Ri
 <li>Document tools used for testing where needed.</li>
 <li>Update glossary where needed.</li>
 <li>Compile full report contents.</li>
-<li>Send the report to client. <a href="#fn86" class="footnoteRef" id="fnref86"><sup>86</sup></a></li>
+<li>Send the report to client. <a href="#fn83" class="footnoteRef" id="fnref83"><sup>83</sup></a></li>
 </ul>
 <h3 id="outputs-19">Outputs</h3>
 <ul>
@@ -7112,7 +7383,7 @@ Covered in full in Primary Method:
 <p>Please feel free to stop me or ask if a question is unclear, or if you would like to take a break.</p>
 <p>The interview starts with some questions about you and the organization. Again, this will all be kept strictly confidential.</p>
 <h5 id="open-up">Open Up</h5>
-<p>&quot;Warm up the participant with questions they are comfortable with.&quot; <a href="#fn87" class="footnoteRef" id="fnref87"><sup>87</sup></a></p>
+<p>&quot;Warm up the participant with questions they are comfortable with.&quot; <a href="#fn84" class="footnoteRef" id="fnref84"><sup>84</sup></a></p>
 <ol class="example" type="1">
 <li>What is your name?</li>
 <li>What is your position in the organization?</li>
@@ -7170,9 +7441,9 @@ Covered in full in Primary Method:
 </ul></li>
 </ol>
 <h5 id="go-broad">Go Broad</h5>
-<p>&quot;Prompt bigger, even aspirational, thinking that they may not be accustomed to on a daily basis.&quot; <a href="#fn88" class="footnoteRef" id="fnref88"><sup>88</sup></a></p>
+<p>&quot;Prompt bigger, even aspirational, thinking that they may not be accustomed to on a daily basis.&quot; <a href="#fn85" class="footnoteRef" id="fnref85"><sup>85</sup></a></p>
 <h5 id="go-specific">Go Specific</h5>
-<p>&quot;Dig deeper on the challenge at hand &amp; prompt with ‘what if’ scenarios.&quot; <a href="#fn89" class="footnoteRef" id="fnref89"><sup>89</sup></a></p>
+<p>&quot;Dig deeper on the challenge at hand &amp; prompt with ‘what if’ scenarios.&quot; <a href="#fn86" class="footnoteRef" id="fnref86"><sup>86</sup></a></p>
 <ol start="23" class="example" type="1">
 <li>What is the most important reason for your organization to exist? (Provide an example if needed - Examples below)
 <ul>
@@ -7421,13 +7692,13 @@ Covered in full in Primary Method:
 <h5 id="threat-information">Threat Information</h5>
 <p>58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68</p>
 <h5 id="capacity-1">Capacity</h5>
-<p>Capacity questions seek to reflect organizations’ readiness and likelihood to succeed in engaging with technology in their work. <a href="#fn90" class="footnoteRef" id="fnref90"><sup>90</sup></a></p>
+<p>Capacity questions seek to reflect organizations’ readiness and likelihood to succeed in engaging with technology in their work. <a href="#fn87" class="footnoteRef" id="fnref87"><sup>87</sup></a></p>
 <p>23, 26, 27, 28, 34, 35, 36, 37, 38, 39, 40, 43, 45, 46, 29, 30, 31, 55, 9, 16, 17, 18, 19, 20</p>
 <h5 id="challenge">Challenge</h5>
-<p>Challenge questions seek to reflect the degree to which internal an external factors will complicate or inhibit the effective and safe uptake and use. <a href="#fn91" class="footnoteRef" id="fnref91"><sup>91</sup></a></p>
+<p>Challenge questions seek to reflect the degree to which internal an external factors will complicate or inhibit the effective and safe uptake and use. <a href="#fn88" class="footnoteRef" id="fnref88"><sup>88</sup></a></p>
 <p>41, 40, 42, 46, 47, 48, 69, 70, 71</p>
 <h5 id="audit-scope">Audit Scope</h5>
-<p>Scope questions explore what the client is looking to gain out of the audit, why the client is looking to have an audit performed against their environment, and whether or not they want certain types of tests performed during the audit. <a href="#fn92" class="footnoteRef" id="fnref92"><sup>92</sup></a></p>
+<p>Scope questions explore what the client is looking to gain out of the audit, why the client is looking to have an audit performed against their environment, and whether or not they want certain types of tests performed during the audit. <a href="#fn89" class="footnoteRef" id="fnref89"><sup>89</sup></a></p>
 <p>44, 72, 49, 51, 50, 52</p>
 <h5 id="network-audit-questions">Network Audit Questions</h5>
 <p>90, 91, 92, 93, 81, 80, 79, 78, 77, 49, 74, 75, 76, 53, 54, 56, 57</p>
@@ -7478,7 +7749,7 @@ Covered in full in Primary Method:
 <li>John's incremental modes, limited by types</li>
 <li>Crunch's raw brute-force attack (very, very time intensive - a complete waste of time without GPUs)</li>
 </ul>
-<h4 id="dictionary-research-and-creation-1">Dictionary Research and Creation</h4>
+<h4 id="dictionary-research-and-creation-2">Dictionary Research and Creation</h4>
 <p><strong>Before you arrive on-site</strong> it is important to have your password cracking tools downloaded and relevant dictionaries ready to go, as your main demonstration and use of these tools is to gain access to the organization's network. The effectiveness of this demonstration is drastically reduced if you already have had to ask for the password to connect to the Internet and update your dictionaries, tools, or so on. Some of these files (especially larger password dictionaries) can be quite large, so downloading them in-country is not recommended.</p>
 <p>Many password dictionary sites, such as <a href="https://wiki.skullsecurity.org/Passwords">SkullSecurity</a> , maintain core dictionaries in multiple languages. If your target language is not available, some quick regular expression work can turn spell-check dictionaries (such as those used by <a href="http://extensions.libreoffice.org/extension-center?getCategories=Dictionary">LibreOffice</a> into useful word lists. It is generally useful to always test with English in addition to the target language.</p>
 <p>[CloudCracker(]https://www.cloudcracker.com/dictionaries.html) and <a href="http://www.openwall.com/wordlists/">OpenWall</a> have, for a fee, well-tested password dictionaries.</p>
@@ -7513,7 +7784,7 @@ journalism
 1992
 92</code></pre>
 <p>Also add common password fragments: qwerty, 1234/5/6/7/8, and, based on field experience, four-digit dates back for ~20 years in both the Gregorian (Western) and (if relevant) local calendar, plus the founding year of the organization). It's quite amazing how often a recent year will be part of a wifi password -- this presentation discusses many common patterns in passwords: https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf</p>
-<h5 id="optional-further-steps-1">Optional Further steps</h5>
+<h5 id="optional-further-steps-2">Optional Further steps</h5>
 <p>Use <a href="http://digi.ninja/projects/cewl.php">CeWL</a>, to spider the organization's web properties to generate additional phrases. This list will need review, as some of the generated content is not very useful, but may be useful if the site is not in a language the auditor reads fluently.</p>
 <p>For passwords other than WPA, specific policies or patterns may help to focus your password dictionary further. <a href="https://github.com/iphelix/PACK">PACK, or Password Analysis and Cracking Toolkit</a> is a collection of utilities developed to aid in analysis of password lists in order to enhance password cracking through pattern detection of masks, rules, character-sets and other password characteristics. The toolkit generates valid input files for Hashcat family of password crackers.&quot; PACK is most useful for large sets of passwords, where it can detect patterns in already-broken passwords to help build new rules. Both password cracking tools listed here are powerful, and have slightly different abilities. The auditor should choose the one they prefer and/or the one which has the features they desire for this job.</p>
 <h4 id="combinator-attack-with-scripting-and-hashcat">Combinator Attack with scripting and Hashcat</h4>
@@ -7562,7 +7833,7 @@ journalism
 <p>https://www.owasp.org/images/a/af/2011-Supercharged-Slides-Redman-OWASP-Feb.pdf</p>
 <p>http://www.nytimes.com/2014/11/19/magazine/the-secret-life-of-passwords.html?_r=1</p>
 <h2 id="appendix-password-survey">APPENDIX: Password Survey</h2>
-<h6 id="password-survey-1">Password Survey</h6>
+<h6 id="password-survey-2">Password Survey</h6>
 <p>How many passwords do you have to remember for accounts and devices used to do your work?</p>
 <ul>
 <li>[ ] No</li>
@@ -7837,57 +8108,54 @@ journalism
 <li id="fn39"><p><a href="https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys">Acquiring API Keys</a><a href="#fnref39">↩</a></p></li>
 <li id="fn40"><p><a href="http://www.lanmaster53.com/2014/05/recon-ng-update">The flow of information through the Recon-ng framework. (See: &quot;Data Flow&quot; section)</a><a href="#fnref40">↩</a></p></li>
 <li id="fn41"><p><a href="#vulnerability-analysis">See: Vulnerability Analysis</a><a href="#fnref41">↩</a></p></li>
-<li id="fn42"><p><a href="#identifying-software-versions">Identifying Software Versions</a><a href="#fnref42">↩</a></p></li>
-<li id="fn43"><p><a href="#examining-firewalls-across-os">Examining Firewalls Across OS</a><a href="#fnref43">↩</a></p></li>
-<li id="fn44"><p><a href="#identifying-oddone-off-services">Identifying Odd/One-Off Services</a><a href="#fnref44">↩</a></p></li>
-<li id="fn45"><p><a href="#appendix-c">APPENDIX C - Password Survey</a><a href="#fnref45">↩</a></p></li>
-<li id="fn46"><p><a href="#password-security">Password Security</a><a href="#fnref46">↩</a></p></li>
-<li id="fn47"><p><a href="#appendix-c">APPENDIX C - Password Survey</a><a href="#fnref47">↩</a></p></li>
-<li id="fn48"><p><a href="#password-security">Password Security</a><a href="#fnref48">↩</a></p></li>
-<li id="fn49"><p><a href="#privilege-separation-across-os">Privilege Separation Across OS</a><a href="#fnref49">↩</a></p></li>
-<li id="fn50"><p><a href="#anti-virus-updates">Anti-Virus Updates</a><a href="#fnref50">↩</a></p></li>
-<li id="fn51"><p><a href="#identifying-software-versions">Identifying Software Versions</a><a href="#fnref51">↩</a></p></li>
-<li id="fn52"><p><a href="#device-encryption-by-os">Device Encryption By OS Type</a><a href="#fnref52">↩</a></p></li>
-<li id="fn53"><p><a href="https://technet.microsoft.com/en-us/security/bulletin">Microsoft Security Bulletin</a><a href="#fnref53">↩</a></p></li>
-<li id="fn54"><p><a href="https://protect.iu.edu/cybersecurity/indepth">&quot;In-Depth Reading, Vendor Information, &amp; External Advisories&quot;</a><a href="#fnref54">↩</a></p></li>
-<li id="fn55"><p><a href="http://oss-security.openwall.org/wiki/vendors">&quot;Security-Related Vendor Information&quot;</a><a href="#fnref55">↩</a></p></li>
-<li id="fn56"><p><a href="https://www.cert.org/historical/advisories/">&quot;CERT/CC Advisories&quot;</a><a href="#fnref56">↩</a></p></li>
-<li id="fn57"><p><a href="http://securitytracker.com/topics/topics.html">&quot;Security Tracker&quot;</a><a href="#fnref57">↩</a></p></li>
-<li id="fn58"><p><a href="https://www.mozilla.org/security/known-vulnerabilities/">&quot;Known Vulnerabilities in Mozilla Products&quot;</a><a href="#fnref58">↩</a></p></li>
-<li id="fn59"><p><a href="https://technet.microsoft.com/en-us/security/bulletin">Microsoft Security Bulletin</a><a href="#fnref59">↩</a></p></li>
-<li id="fn60"><p><a href="https://protect.iu.edu/cybersecurity/indepth">&quot;In-Depth Reading, Vendor Information, &amp; External Advisories&quot;</a><a href="#fnref60">↩</a></p></li>
-<li id="fn61"><p><a href="http://oss-security.openwall.org/wiki/vendors">&quot;Security-Related Vendor Information&quot;</a><a href="#fnref61">↩</a></p></li>
-<li id="fn62"><p><a href="https://www.cert.org/historical/advisories/">&quot;CERT/CC Advisories&quot;</a><a href="#fnref62">↩</a></p></li>
-<li id="fn63"><p><a href="http://securitytracker.com/topics/topics.html">&quot;Security Tracker&quot;</a><a href="#fnref63">↩</a></p></li>
-<li id="fn64"><p><a href="https://www.mozilla.org/security/known-vulnerabilities/">&quot;Known Vulnerabilities in Mozilla Products&quot;</a><a href="#fnref64">↩</a></p></li>
-<li id="fn65"><p><a href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf#page=38">&quot;While vulnerability scanners check only for the possible existence of a vulnerability, the attack phase of a penetration test exploits the vulne rability to confirm its existence.&quot;</a><a href="#fnref65">↩</a></p></li>
-<li id="fn66"><p>&quot;Penetration testing also poses a high risk to the organization’s networks and systems because it uses real exploits and attacks against production systems and data. Because of its high cost and potential impact, penetration testing of an organization’s network and systems on an annual basis may be sufficient. Also, penetration testing can be designed to stop when the tester reaches a point when an additional action will cause damage.&quot; - <a href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf#page=40">NIST SP 800-115, Technical Guide to Information Security Testing and Assessment</a><a href="#fnref66">↩</a></p></li>
-<li id="fn67"><p><a href="#network-access">Network Access</a><a href="#fnref67">↩</a></p></li>
-<li id="fn68"><p><a href="#appendix-b">APPENDIX B - Personal Information to Keep Private</a><a href="#fnref68">↩</a></p></li>
-<li id="fn69"><p><a href="#appendix-b">APPENDIX B - Personal Information to Keep Private</a><a href="#fnref69">↩</a></p></li>
-<li id="fn70"><p><a href="https://targetedthreats.net/media/1-ExecutiveSummary.pdf#page=30">&quot;CSOs should gradually build a culture in which all staff, regardless of technical background, feel some responsibility for their own digital hygiene. While staff need not become technical experts, CSOs should attempt to raise the awareness of every staff member, from executive directors to interns - groups are only as strong as their weakest link—so that they can spot issues, reduce vulnerabilities, know where to go for further help, and educate others.&quot;</a><a href="#fnref70">↩</a></p></li>
-<li id="fn71"><p><a href="http://books.google.com/books?id=nn1kGwL4hRgC&amp;lpg=PP1&amp;pg=PA71#v=onepage&amp;q&amp;f=false">&quot;Pre-Mortum Strategy&quot; - Sources of Power: How People Make Decisions - p.71</a> <!-- Interview --><a href="#fnref71">↩</a></p></li>
-<li id="fn72"><p><a href="http://books.google.com/books?id=nn1kGwL4hRgC&amp;lpg=PP1&amp;pg=PA71#v=onepage&amp;q&amp;f=false">&quot;Pre-Mortum Strategy&quot; - Sources of Power: How People Make Decisions - p.71</a> <!-- Interview --><a href="#fnref72">↩</a></p></li>
-<li id="fn73"><p><a href="http://books.google.com/books?id=nn1kGwL4hRgC&amp;lpg=PP1&amp;pg=PA71#v=onepage&amp;q&amp;f=false">&quot;Pre-Mortum Strategy&quot; - Sources of Power: How People Make Decisions - p.71</a> <!-- Interview --><a href="#fnref73">↩</a></p></li>
-<li id="fn74"><p><a href="http://www.transparency.org/cpi2013/results/">Corruption Perception Index</a><a href="#fnref74">↩</a></p></li>
-<li id="fn75"><p><a href="https://iscproject.org/country-assessments/">The ISC Project completes evaluations of information security threats in a broad range of countries. The resulting comprehensive written assessments describe each country’s digital security situation through consideration of four main categories: online surveillance, online attacks, online censorship, and user profile/access.</a><a href="#fnref75">↩</a></p></li>
-<li id="fn76"><p><a href="http://www.eisf.eu/alerts/">EISF distributes frequent analysis and summaries of issues relevant to humanitarian security risk management.</a><a href="#fnref76">↩</a></p></li>
-<li id="fn77"><p><a href="http://www.alexa.com/topsites/countries">The top 500 sites in each country or territory.</a><a href="#fnref77">↩</a></p></li>
-<li id="fn78"><p><a href="http://jameslosey.com/post/98162645081/who-publishes-transparency-reports-here-is-an">Who publishes Transparency Reports?</a><a href="#fnref78">↩</a></p></li>
-<li id="fn79"><p><a href="http://www.odihpn.org/download/gpr_8_revised2pdf#page=38">&quot;Impacts: Chapter 2.7 p. 46 - Operational Security Management in Violent Environments&quot;</a><a href="#fnref79">↩</a></p></li>
-<li id="fn80"><p><a href="http://www.odihpn.org/download/gpr_8_revised2pdf#page=38">&quot;Likelihood: Chapter 2.7 p. 47 - Operational Security Management in Violent Environments&quot;</a><a href="#fnref80">↩</a></p></li>
-<li id="fn81"><p><a href="http://www.pentest-standard.org/index.php/Pre-engagement#Legal_Considerations">&quot; Some activities common in penetration tests may violate local laws. For this reason, it is advised to check the legality of common pentest tasks in the location where the work is to be performed.&quot;</a><a href="#fnref81">↩</a></p></li>
-<li id="fn82"><p>&quot;Threat Modeling: Designing for Security&quot; by Adam Shostack<a href="#fnref82">↩</a></p></li>
-<li id="fn83"><p>See: &quot;Threat Modeling: Designing for Security&quot; by Adam Shostack, p. 125.<a href="#fnref83">↩</a></p></li>
-<li id="fn84"><p>&quot;Threat Modeling: Designing for Security&quot; by Adam Shostack<a href="#fnref84">↩</a></p></li>
-<li id="fn85"><p>See: &quot;Threat Modeling: Designing for Security&quot; by Adam Shostack, p. 401.<a href="#fnref85">↩</a></p></li>
-<li id="fn86"><p>&quot;When a pilot lands an airliner, their job isn’t over. They still have to navigate the myriad of taxiways and park at the gate safely. The same is true of you and your pen test reports, just because its finished doesn't mean you can switch off entirely. You still have to get the report out to the client, and you have to do so securely. Electronic distribution using public key cryptography is probably the best option, but not always possible. If symmetric encryption is to be used, a strong key should be used and must be transmitted out of band. Under no circumstances should a report be transmitted unencrypted. It all sounds like common sense, but all too often people fall down at the final hurdle.&quot; - <a href="http://resources.infosecinstitute.com/writing-penetration-testing-reports/">The Art of Writing Penetration Test Reports</a><a href="#fnref86">↩</a></p></li>
-<li id="fn87"><p><a href="http://www.ideo.com/work/human-centered-design-toolkit">&quot;IDEO Human-Centered Design Toolkit&quot;</a><a href="#fnref87">↩</a></p></li>
-<li id="fn88"><p><a href="http://www.ideo.com/work/human-centered-design-toolkit">&quot;IDEO Human-Centered Design Toolkit&quot;</a><a href="#fnref88">↩</a></p></li>
-<li id="fn89"><p><a href="http://www.ideo.com/work/human-centered-design-toolkit">&quot;IDEO Human-Centered Design Toolkit&quot;</a><a href="#fnref89">↩</a></p></li>
-<li id="fn90"><p><a href="https://www.theengineroom.org/projects/techscape/tsindicators/">&quot;TechScape Indicators - the engine room&quot;</a><a href="#fnref90">↩</a></p></li>
-<li id="fn91"><p><a href="https://www.theengineroom.org/projects/techscape/tsindicators/">&quot;TechScape Indicators - the engine room&quot;</a><a href="#fnref91">↩</a></p></li>
-<li id="fn92"><p><a href="http://www.pentest-standard.org/index.php/Pre-engagement#Questionnaires">&quot;Questionnaires - The Penetration Testing Execution Standard&quot;</a><a href="#fnref92">↩</a></p></li>
+<li id="fn42"><p><a href="#appendix-c">APPENDIX C - Password Survey</a><a href="#fnref42">↩</a></p></li>
+<li id="fn43"><p><a href="#password-security">Password Security</a><a href="#fnref43">↩</a></p></li>
+<li id="fn44"><p><a href="#appendix-c">APPENDIX C - Password Survey</a><a href="#fnref44">↩</a></p></li>
+<li id="fn45"><p><a href="#password-security">Password Security</a><a href="#fnref45">↩</a></p></li>
+<li id="fn46"><p><a href="#privilege-separation-across-os">Privilege Separation Across OS</a><a href="#fnref46">↩</a></p></li>
+<li id="fn47"><p><a href="#anti-virus-updates">Anti-Virus Updates</a><a href="#fnref47">↩</a></p></li>
+<li id="fn48"><p><a href="#identifying-software-versions">Identifying Software Versions</a><a href="#fnref48">↩</a></p></li>
+<li id="fn49"><p><a href="#device-encryption-by-os">Device Encryption By OS Type</a><a href="#fnref49">↩</a></p></li>
+<li id="fn50"><p><a href="https://technet.microsoft.com/en-us/security/bulletin">Microsoft Security Bulletin</a><a href="#fnref50">↩</a></p></li>
+<li id="fn51"><p><a href="https://protect.iu.edu/cybersecurity/indepth">&quot;In-Depth Reading, Vendor Information, &amp; External Advisories&quot;</a><a href="#fnref51">↩</a></p></li>
+<li id="fn52"><p><a href="http://oss-security.openwall.org/wiki/vendors">&quot;Security-Related Vendor Information&quot;</a><a href="#fnref52">↩</a></p></li>
+<li id="fn53"><p><a href="https://www.cert.org/historical/advisories/">&quot;CERT/CC Advisories&quot;</a><a href="#fnref53">↩</a></p></li>
+<li id="fn54"><p><a href="http://securitytracker.com/topics/topics.html">&quot;Security Tracker&quot;</a><a href="#fnref54">↩</a></p></li>
+<li id="fn55"><p><a href="https://www.mozilla.org/security/known-vulnerabilities/">&quot;Known Vulnerabilities in Mozilla Products&quot;</a><a href="#fnref55">↩</a></p></li>
+<li id="fn56"><p><a href="https://technet.microsoft.com/en-us/security/bulletin">Microsoft Security Bulletin</a><a href="#fnref56">↩</a></p></li>
+<li id="fn57"><p><a href="https://protect.iu.edu/cybersecurity/indepth">&quot;In-Depth Reading, Vendor Information, &amp; External Advisories&quot;</a><a href="#fnref57">↩</a></p></li>
+<li id="fn58"><p><a href="http://oss-security.openwall.org/wiki/vendors">&quot;Security-Related Vendor Information&quot;</a><a href="#fnref58">↩</a></p></li>
+<li id="fn59"><p><a href="https://www.cert.org/historical/advisories/">&quot;CERT/CC Advisories&quot;</a><a href="#fnref59">↩</a></p></li>
+<li id="fn60"><p><a href="http://securitytracker.com/topics/topics.html">&quot;Security Tracker&quot;</a><a href="#fnref60">↩</a></p></li>
+<li id="fn61"><p><a href="https://www.mozilla.org/security/known-vulnerabilities/">&quot;Known Vulnerabilities in Mozilla Products&quot;</a><a href="#fnref61">↩</a></p></li>
+<li id="fn62"><p><a href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf#page=38">&quot;While vulnerability scanners check only for the possible existence of a vulnerability, the attack phase of a penetration test exploits the vulne rability to confirm its existence.&quot;</a><a href="#fnref62">↩</a></p></li>
+<li id="fn63"><p>&quot;Penetration testing also poses a high risk to the organization’s networks and systems because it uses real exploits and attacks against production systems and data. Because of its high cost and potential impact, penetration testing of an organization’s network and systems on an annual basis may be sufficient. Also, penetration testing can be designed to stop when the tester reaches a point when an additional action will cause damage.&quot; - <a href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf#page=40">NIST SP 800-115, Technical Guide to Information Security Testing and Assessment</a><a href="#fnref63">↩</a></p></li>
+<li id="fn64"><p><a href="#network-access">Network Access</a><a href="#fnref64">↩</a></p></li>
+<li id="fn65"><p><a href="#appendix-b">APPENDIX B - Personal Information to Keep Private</a><a href="#fnref65">↩</a></p></li>
+<li id="fn66"><p><a href="#appendix-b">APPENDIX B - Personal Information to Keep Private</a><a href="#fnref66">↩</a></p></li>
+<li id="fn67"><p><a href="https://targetedthreats.net/media/1-ExecutiveSummary.pdf#page=30">&quot;CSOs should gradually build a culture in which all staff, regardless of technical background, feel some responsibility for their own digital hygiene. While staff need not become technical experts, CSOs should attempt to raise the awareness of every staff member, from executive directors to interns - groups are only as strong as their weakest link—so that they can spot issues, reduce vulnerabilities, know where to go for further help, and educate others.&quot;</a><a href="#fnref67">↩</a></p></li>
+<li id="fn68"><p><a href="http://books.google.com/books?id=nn1kGwL4hRgC&amp;lpg=PP1&amp;pg=PA71#v=onepage&amp;q&amp;f=false">&quot;Pre-Mortum Strategy&quot; - Sources of Power: How People Make Decisions - p.71</a> <!-- Interview --><a href="#fnref68">↩</a></p></li>
+<li id="fn69"><p><a href="http://books.google.com/books?id=nn1kGwL4hRgC&amp;lpg=PP1&amp;pg=PA71#v=onepage&amp;q&amp;f=false">&quot;Pre-Mortum Strategy&quot; - Sources of Power: How People Make Decisions - p.71</a> <!-- Interview --><a href="#fnref69">↩</a></p></li>
+<li id="fn70"><p><a href="http://books.google.com/books?id=nn1kGwL4hRgC&amp;lpg=PP1&amp;pg=PA71#v=onepage&amp;q&amp;f=false">&quot;Pre-Mortum Strategy&quot; - Sources of Power: How People Make Decisions - p.71</a> <!-- Interview --><a href="#fnref70">↩</a></p></li>
+<li id="fn71"><p><a href="http://www.transparency.org/cpi2013/results/">Corruption Perception Index</a><a href="#fnref71">↩</a></p></li>
+<li id="fn72"><p><a href="https://iscproject.org/country-assessments/">The ISC Project completes evaluations of information security threats in a broad range of countries. The resulting comprehensive written assessments describe each country’s digital security situation through consideration of four main categories: online surveillance, online attacks, online censorship, and user profile/access.</a><a href="#fnref72">↩</a></p></li>
+<li id="fn73"><p><a href="http://www.eisf.eu/alerts/">EISF distributes frequent analysis and summaries of issues relevant to humanitarian security risk management.</a><a href="#fnref73">↩</a></p></li>
+<li id="fn74"><p><a href="http://www.alexa.com/topsites/countries">The top 500 sites in each country or territory.</a><a href="#fnref74">↩</a></p></li>
+<li id="fn75"><p><a href="http://jameslosey.com/post/98162645081/who-publishes-transparency-reports-here-is-an">Who publishes Transparency Reports?</a><a href="#fnref75">↩</a></p></li>
+<li id="fn76"><p><a href="http://www.odihpn.org/download/gpr_8_revised2pdf#page=38">&quot;Impacts: Chapter 2.7 p. 46 - Operational Security Management in Violent Environments&quot;</a><a href="#fnref76">↩</a></p></li>
+<li id="fn77"><p><a href="http://www.odihpn.org/download/gpr_8_revised2pdf#page=38">&quot;Likelihood: Chapter 2.7 p. 47 - Operational Security Management in Violent Environments&quot;</a><a href="#fnref77">↩</a></p></li>
+<li id="fn78"><p><a href="http://www.pentest-standard.org/index.php/Pre-engagement#Legal_Considerations">&quot; Some activities common in penetration tests may violate local laws. For this reason, it is advised to check the legality of common pentest tasks in the location where the work is to be performed.&quot;</a><a href="#fnref78">↩</a></p></li>
+<li id="fn79"><p>&quot;Threat Modeling: Designing for Security&quot; by Adam Shostack<a href="#fnref79">↩</a></p></li>
+<li id="fn80"><p>See: &quot;Threat Modeling: Designing for Security&quot; by Adam Shostack, p. 125.<a href="#fnref80">↩</a></p></li>
+<li id="fn81"><p>&quot;Threat Modeling: Designing for Security&quot; by Adam Shostack<a href="#fnref81">↩</a></p></li>
+<li id="fn82"><p>See: &quot;Threat Modeling: Designing for Security&quot; by Adam Shostack, p. 401.<a href="#fnref82">↩</a></p></li>
+<li id="fn83"><p>&quot;When a pilot lands an airliner, their job isn’t over. They still have to navigate the myriad of taxiways and park at the gate safely. The same is true of you and your pen test reports, just because its finished doesn't mean you can switch off entirely. You still have to get the report out to the client, and you have to do so securely. Electronic distribution using public key cryptography is probably the best option, but not always possible. If symmetric encryption is to be used, a strong key should be used and must be transmitted out of band. Under no circumstances should a report be transmitted unencrypted. It all sounds like common sense, but all too often people fall down at the final hurdle.&quot; - <a href="http://resources.infosecinstitute.com/writing-penetration-testing-reports/">The Art of Writing Penetration Test Reports</a><a href="#fnref83">↩</a></p></li>
+<li id="fn84"><p><a href="http://www.ideo.com/work/human-centered-design-toolkit">&quot;IDEO Human-Centered Design Toolkit&quot;</a><a href="#fnref84">↩</a></p></li>
+<li id="fn85"><p><a href="http://www.ideo.com/work/human-centered-design-toolkit">&quot;IDEO Human-Centered Design Toolkit&quot;</a><a href="#fnref85">↩</a></p></li>
+<li id="fn86"><p><a href="http://www.ideo.com/work/human-centered-design-toolkit">&quot;IDEO Human-Centered Design Toolkit&quot;</a><a href="#fnref86">↩</a></p></li>
+<li id="fn87"><p><a href="https://www.theengineroom.org/projects/techscape/tsindicators/">&quot;TechScape Indicators - the engine room&quot;</a><a href="#fnref87">↩</a></p></li>
+<li id="fn88"><p><a href="https://www.theengineroom.org/projects/techscape/tsindicators/">&quot;TechScape Indicators - the engine room&quot;</a><a href="#fnref88">↩</a></p></li>
+<li id="fn89"><p><a href="http://www.pentest-standard.org/index.php/Pre-engagement#Questionnaires">&quot;Questionnaires - The Penetration Testing Execution Standard&quot;</a><a href="#fnref89">↩</a></p></li>
 </ol>
 </section>
 </body>
