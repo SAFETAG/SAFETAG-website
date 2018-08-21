@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "SAFETAG Stories: The DDoS Outreach Strategy"
-date:   2018-08-24 12:49:55
+date:   2018-08-23 15:49:55
 tags: SAFETAG, ddos, website, TRI, metadata
 author: Jon
 ---
