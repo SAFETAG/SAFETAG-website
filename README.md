@@ -1,3 +1,3 @@
-Visit https://USABLE.tools for more information!
+Visit https://SAFETAG.org for more information!
 
-USABLE connects communities world-wide with leading UX experts and digital security tool developers through Tool Feedback Trainings to solve real problems, build better tools, and create lasting, re-usable user personas for others to incorporate.
+SAFETAG is a professional audit framework that adapts traditional penetration testing and risk assessment methodologies to be relevant to smaller non-profit organizations based or operating in the developing world.
