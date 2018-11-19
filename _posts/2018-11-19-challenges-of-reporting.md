@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "The challenges of reporting"
-date:   2018-11-18 12:12:12
-tags: tags
+date:   2018-11-19 18:12:00
+tags: Reporting
 author: Carlos Guerra, Mario Felaco
 ---
 
 *This article was written by Carlos Guerra with the input and help of
-Mario Felaco; of Con-nexo. *
+Mario Felaco; of [Con-nexo](https://con-nexo.org/). *
 
 We run organizational security training sessions, long term support and
 security assessments for NGOs (Non-Government Organizations) and
