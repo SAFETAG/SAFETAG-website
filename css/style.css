@@ -10,7 +10,8 @@
 /* Basic */
 
 	html, body {
-		background: #1c1d26;
+		background: #565868
+		/* #1c1d26; */
 	}
 
 	body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -30,7 +31,7 @@
 		color: rgba(255, 255, 255, 0.85);
 		font-family: "Roboto", Helvetica, sans-serif;
 		font-size: 18pt;
-		font-weight: 250;
+		font-weight: 500;
 		line-height: 1.5em;
 	}
 
@@ -52,15 +53,16 @@
 		}
 
 	strong, b {
-		font-weight: 350;
+		font-weight: 800;
 	}
 
 	em, i {
 		font-style: italic;
 	}
-
 	p {
 		margin: 0 0 2em 0;
+		font-weight: 500;
+
 	}
 
 	.post-list p, .post-content p { font-size: 1.25em; margin-bottom: .75em;}
@@ -174,11 +176,11 @@
 	@-o-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
 	@-ms-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
 	@keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
-	@-moz-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #1c1d26; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #1c1d26; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
-	@-webkit-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #1c1d26; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #1c1d26; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
-	@-o-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #1c1d26; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #1c1d26; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
-	@-ms-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #1c1d26; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #1c1d26; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
-	@keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #1c1d26; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #1c1d26; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
+	@-moz-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #565868; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #565868; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
+	@-webkit-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #565868; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #565868; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
+	@-o-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #565868; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #565868; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
+	@-ms-keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #565868; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #565868; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
+	@keyframes spinner-hide { 0% { color: rgba(255, 255, 255, 0.15); z-index: 100001; -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 99% { color: #565868; z-index: 100001; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } 100% { color: #565868; z-index: -1; -moz-transform: scale(0.5) rotate(360deg); -webkit-transform: scale(0.5) rotate(360deg); -o-transform: scale(0.5) rotate(360deg); -ms-transform: scale(0.5) rotate(360deg); transform: scale(0.5) rotate(360deg); } }
 	@-moz-keyframes spinner-rotate { 0% { -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 100% { -moz-transform: scale(1) rotate(360deg); -webkit-transform: scale(1) rotate(360deg); -o-transform: scale(1) rotate(360deg); -ms-transform: scale(1) rotate(360deg); transform: scale(1) rotate(360deg); } }
 	@-webkit-keyframes spinner-rotate { 0% { -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 100% { -moz-transform: scale(1) rotate(360deg); -webkit-transform: scale(1) rotate(360deg); -o-transform: scale(1) rotate(360deg); -ms-transform: scale(1) rotate(360deg); transform: scale(1) rotate(360deg); } }
 	@-o-keyframes spinner-rotate { 0% { -moz-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg); -o-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); transform: scale(1) rotate(0deg); } 100% { -moz-transform: scale(1) rotate(360deg); -webkit-transform: scale(1) rotate(360deg); -o-transform: scale(1) rotate(360deg); -ms-transform: scale(1) rotate(360deg); transform: scale(1) rotate(360deg); } }
@@ -237,7 +239,7 @@
 			-o-animation: overlay-hide 1.5s ease-in forwards !important;
 			-ms-animation: overlay-hide 1.5s ease-in forwards !important;
 			animation: overlay-hide 1.5s ease-in forwards !important;
-			background: #1c1d26;
+			background: ##565868;
 			content: '';
 			display: block;
 			height: 100%;
@@ -426,7 +428,7 @@
 	}
 
 	select option {
-		background-color: #1c1d26;
+		background-color: #565868;
 		color: #ffffff;
 	}
 
@@ -588,7 +590,7 @@
 			}
 
 			.icon.alt:before {
-				color: #1c1d26 !important;
+				color: #565868 !important;
 				text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff;
 			}
 
