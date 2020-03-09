@@ -6,6 +6,16 @@ tags: SAFETAG, IFF, Internet Freedom Festival, OrgSec
 author: Jon
 ---
 
+## UPDATE: IFF has been cancelled!
+
+**Please read the [official statement at the IFF website](https://internetfreedomfestival.org/wiki/index.php/Cancellation_of_the_2020_Internet_Freedom_Festival)**
+
+*We are reviewing the OrgSec Village applications and considering options to revisit this through other conferences later in 2020 or virtually.*
+
+---
+
+<!--more-->
+
 **Internews will be the host of the [Internet Freedom Festival](https://internetfreedomfestival.org/)'s first-ever Organizational Security Village - [Propose your session today](https://forms.gle/AiLgB9PHdq3ka3Tt9) !**
 
 <a href="https://internetfreedomfestival.org/"><img src="https://internetfreedomfestival.org/wp-content/uploads/2019/09/Captura-de-pantalla-2019-06-19-a-las-15.54.19.png" alt="Internet Freedom Festival: Save the Date - April 20-24" /></a>
