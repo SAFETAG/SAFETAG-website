@@ -188,7 +188,10 @@ div#main h2,h3,h4,p, section>h1 {color: black !important;}
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-size: 48px;
+    font-weight: bolder;
+    border-left: 20px  solid black;
+    padding-left: 10px;
 }
 
 
@@ -220,6 +223,8 @@ div#main h2,h3,h4,p, section>h1 {color: black !important;}
             font-size: 28px;
         }
     }
+
+   h2 > a.post-link { font-size: 32px ; border-left: 2em solid black;}
 
     h3 {
         font-size: 26px;
