@@ -34,8 +34,7 @@ We expect this design process to take a total of 4-6 weeks, including time for i
   * Reversed-out versions for dark and light backgrounds
 * Style guide that can be used for both print documents and websites, to include:
   * Selection of open-licensed fonts for headers and normal text
-  * Creation of a color palette, ensuring colors used are color-blind friendly
+  * Creation of a  [web content accessibility guidelines AA/AAA ](https://www.w3.org/TR/WCAG21/) compliant color palette
 * Text/visual element styling (headers, buttons in active/inactive states, call-out textboxes, unordered bulleted list items, checklists, hyperlink formatting, footnote/reference formatting)
 * Specific visual iconography to support SAFETAG's content and structure (e.g. different icons for technical, research, and interactive elements of the framework which align with the overall branding, see [our "TRI" approach](https://safetag.org/2018/08/16/SAFETAGStories-dropbox.html) for background)
-* All developed outputs should comply with standard [web content accessibility guidelines](https://www.w3.org/TR/WCAG21/)
 * All inputs and outputs should be compatible with a CC-BY-SA 4.0 license
