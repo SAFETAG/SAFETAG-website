@@ -2,7 +2,7 @@
 layout: post
 title: "IFF Organizational Security Village Day 2"
 date: 2020-06-10 09:00:00
-author: "Henry"
+author: "Ashley"
 # main_image: "images/blog/IFFOSV_Title.svg" # 342px × 178p ~2x1
 # main_image_caption: ""
 tags: ["SAFETAG", "OrgSec", "IFF", "Events"]
