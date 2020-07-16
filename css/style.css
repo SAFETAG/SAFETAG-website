@@ -65,7 +65,7 @@
 
 	}
 
-	.post-list p, .post-content p { font-size: 1.25em; margin-bottom: .75em;}
+	.post-list .post-content { font-size: 1.25em; margin-bottom: .75em;}
 	.post-list h2 {font-weight: bold !important; border-bottom: 1px dotted black;}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -84,31 +84,36 @@
 		font-size: 2em;
 		line-height: 1.5em;
 		letter-spacing: -0.025em;
+		font-weight: bolder;
 	}
 
 #content > h3,h4,h5,h6 {
 	border-bottom: 1px dotted black;
 	color: black;
 
+
 }
 
 	h3 {
-		font-size: 1.35em;
+		font-size: 1.5em;
 		line-height: 1.5em;
+		font-weight: bolder;
+
 	}
 
 	h4 {
-		font-size: 1.1em;
+		font-size: 1.35em;
 		line-height: 1.5em;
+		font-weight: bold;
 	}
 
 	h5 {
-		font-size: 0.9em;
+		font-size: 1.25em;
 		line-height: 1.5em;
 	}
 
 	h6 {
-		font-size: 0.7em;
+		font-size: 1em;
 		line-height: 1.5em;
 	}
 

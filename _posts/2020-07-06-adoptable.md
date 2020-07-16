@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Introducing ADOPTABLE:  Equipping at-risk organizations with localized expertise, resources, and tools to mitigate digital attacks"
+title: "Introducing ADOPTABLE"
 date: 2020-07-06 09:00:00
 author: "Ashley"
 # main_image: "images/blog/IFFOSV_Title.svg" # 342px × 178p ~2x1
@@ -9,7 +9,7 @@ tags: ["SAFETAG", "OrgSec", "IFF", "Events"]
 draft: false
 ---
 
-**Improving the resilience of at-risk organizations against digital attacks**
+## Equipping at-risk organizations with localized expertise, resources, and tools to mitigate digital attacks
 
 Human rights organizations around the globe continue to face ongoing and increasing digital security threats from state and non-state actors. ADOPTABLE (Adaptable Digital and Organizational Protections by Transforming and Building Long-term Ecosystems) is an Internews project designed to help these at-risk organizations access relevant resources (human, financial, and technical tools) that will allow them to continue to operate safely. Without access to local organizational security experts, usable security and privacy tools, buy-in from decision-makers, and support from funders to adopt stronger safety practices, the organizations and their beneficiaries remain at risk, as does their crucial work.
 
