@@ -9,6 +9,8 @@ tags: ["SAFETAG", "OrgSec", "IFF", "Events"]
 draft: false
 ---
 
+*This is a cross-posted blog from Internews' [USABLE.tools](https://USABLE.tools) project which is advancing usable organizational security tools, including SAFETAG. Read more about this effort on the [Global Technology Blog](https://globaltech.internews.org/blog/introducing-adoptable)*
+
 ## Equipping at-risk organizations with localized expertise, resources, and tools to mitigate digital attacks
 
 Human rights organizations around the globe continue to face ongoing and increasing digital security threats from state and non-state actors. ADOPTABLE (Adaptable Digital and Organizational Protections by Transforming and Building Long-term Ecosystems) is an Internews project designed to help these at-risk organizations access relevant resources (human, financial, and technical tools) that will allow them to continue to operate safely. Without access to local organizational security experts, usable security and privacy tools, buy-in from decision-makers, and support from funders to adopt stronger safety practices, the organizations and their beneficiaries remain at risk, as does their crucial work.
