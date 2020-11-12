@@ -8,7 +8,7 @@ main_image_caption: "Image with title 13 Tips for Conducting Remote SAFETAG Audi
 tags: ["USABLE", "SAFETAG", "Remote Audits", "ADOPTABLE"]
 draft: false
 ---
-<div style="text-align: center"><img src="/images/blog/13Tips.png.png" alt="Image with title 13 Tips for Conducting Remote SAFETAG Audits" style="border: 0; width: 100%; padding: 1em;" /></div>
+<div style="text-align: center"><img src="/images/blog/13Tips.png" alt="Image with title 13 Tips for Conducting Remote SAFETAG Audits" style="border: 0; width: 100%; padding: 1em;" /></div>
 
 *This is a cross-posted blog from Internews' [USABLE.tools](https://USABLE.tools) project which is advancing usable organizational security tools, including SAFETAG. Read more about this effort on the [Global Technology Blog](https://globaltech.internews.org/blog/introducing-adoptable)*
 
